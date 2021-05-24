@@ -1,0 +1,20 @@
+PODS:
+  - CalculateCalendarLogic (0.4.0)
+  - FSCalendar (2.8.2)
+
+DEPENDENCIES:
+  - CalculateCalendarLogic
+  - FSCalendar
+
+SPEC REPOS:
+  trunk:
+    - CalculateCalendarLogic
+    - FSCalendar
+
+SPEC CHECKSUMS:
+  CalculateCalendarLogic: 84d3aff9456340ff07f7b77242a57b5d2f0ed631
+  FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
+
+PODFILE CHECKSUM: 0a62bc07864892313b49afbe325cbe8019c2ab87
+
+COCOAPODS: 1.10.1
