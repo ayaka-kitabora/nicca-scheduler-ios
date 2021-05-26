@@ -1,1 +1,3 @@
 Pods/*
+/.bundle
+/vendor/bundle
