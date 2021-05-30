@@ -8,5 +8,6 @@ target 'NiccaScheduler' do
   # Pods for NiccaScheduler
   pod 'FSCalendar'
   pod 'CalculateCalendarLogic'
+  pod 'RealmSwift'
 
 end

@@ -3,45 +3,50 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="TaskCell" customModule="NiccaScheduler" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sO6-va-mzw">
-                        <rect key="frame" x="5" y="6" width="28" height="27.5"/>
-                        <color key="backgroundColor" red="0.63829441259999997" green="0.63829441259999997" blue="0.63829441259999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sO6-va-mzw">
+                        <rect key="frame" x="20" y="26" width="30" height="27.5"/>
+                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="6Ug-ll-vwe"/>
-                            <constraint firstAttribute="width" secondItem="sO6-va-mzw" secondAttribute="height" multiplier="16:17" id="7NL-rM-uz6"/>
-                            <constraint firstAttribute="width" constant="30" id="bUc-j9-Wff"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="KNu-Va-OuL"/>
+                            <constraint firstAttribute="height" constant="30" id="aPm-np-ERM"/>
+                            <constraint firstAttribute="width" constant="30" id="en3-Hm-qEG"/>
                         </constraints>
+                        <imageReference key="image" image="square.fill" catalog="system" symbolScale="default"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jlv-Jh-DhG">
-                        <rect key="frame" x="45" y="5" width="265" height="30"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jlv-Jh-DhG">
+                        <rect key="frame" x="65" y="15" width="235" height="50"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="k1B-Ee-cF6"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="Jlv-Jh-DhG" secondAttribute="bottom" constant="5" id="5fJ-zd-Inm"/>
-                    <constraint firstAttribute="bottom" secondItem="sO6-va-mzw" secondAttribute="bottom" constant="5" id="8uX-fD-TXE"/>
-                    <constraint firstItem="sO6-va-mzw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="DSx-KP-MUi"/>
-                    <constraint firstItem="Jlv-Jh-DhG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="JSr-x1-Sye"/>
-                    <constraint firstItem="sO6-va-mzw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Qkp-Mi-a9I"/>
-                    <constraint firstAttribute="trailing" secondItem="Jlv-Jh-DhG" secondAttribute="trailing" constant="10" id="cIz-xa-gDU"/>
-                    <constraint firstItem="Jlv-Jh-DhG" firstAttribute="leading" secondItem="sO6-va-mzw" secondAttribute="trailing" constant="10" id="qMf-fD-gdW"/>
+                    <constraint firstItem="Jlv-Jh-DhG" firstAttribute="leading" secondItem="sO6-va-mzw" secondAttribute="trailing" constant="15" id="Acq-QU-7Mk"/>
+                    <constraint firstItem="Jlv-Jh-DhG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="Bha-wD-Emk"/>
+                    <constraint firstAttribute="bottom" secondItem="Jlv-Jh-DhG" secondAttribute="bottom" constant="15" id="Cbt-jW-xnb"/>
+                    <constraint firstItem="sO6-va-mzw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="VJ5-5o-flq"/>
+                    <constraint firstItem="sO6-va-mzw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="YuO-bk-UhG"/>
+                    <constraint firstAttribute="trailing" secondItem="Jlv-Jh-DhG" secondAttribute="trailing" constant="20" id="rm5-MF-FQz"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -50,10 +55,13 @@
                 <outlet property="checkImageView" destination="sO6-va-mzw" id="6SQ-lh-xqE"/>
                 <outlet property="taskLabel" destination="Jlv-Jh-DhG" id="3xS-9Y-hAd"/>
             </connections>
-            <point key="canvasLocation" x="14" y="52"/>
+            <point key="canvasLocation" x="13.043478260869566" y="51.5625"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="square.fill" catalog="system" width="128" height="114"/>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
