@@ -1,1 +1,3 @@
-Pods
+Pods/*
+/.bundle
+/vendor/bundle
