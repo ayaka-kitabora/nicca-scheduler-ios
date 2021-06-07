@@ -32,8 +32,8 @@ class TaskInputViewController: UIViewController, UITextFieldDelegate {
         try! RealmInstance.write {
             RealmInstance.add(instanceTaskModel)
         }
-        
-        dismiss(animated: true, completion: nil)
+        // 前のページに戻る
+        self.navigationController?.popViewController(animated: true)
         
     }
     
