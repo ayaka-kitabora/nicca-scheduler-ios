@@ -33,6 +33,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         taskTableView.delegate = self
         taskTableView.dataSource = self
         taskTableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        
         // Realm
         // df.dateFormat = "yyyy-MM-dd"
         //let currentDay = df.string(from: date)
@@ -64,10 +65,13 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // セルを取得する
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TaskCell
         let task = TaskListResluts[indexPath.row]
         cell.taskLabel.text = task.taskName
+        
+        // タップ時のハイライトの色を無効に
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        
         return cell
     }
     
