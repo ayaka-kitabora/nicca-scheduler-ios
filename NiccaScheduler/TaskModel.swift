@@ -25,7 +25,7 @@ class TaskModel: Object {
 /*
 // 入力されたタスク
 class TaskModel: Object {
-    @objc dynamic var taskId: Int = 0 // タスクID
+    @objc dynamic var taskId: String = NSUUID().uuidString // タスクID
     @objc dynamic var taskName: String? = nil // タスク名
     @objc dynamic var scheduleStartAt: Date? = nil // 開始予定日
     @objc dynamic var scheduleEndAt: Date? = nil // 終了予定日
@@ -44,8 +44,8 @@ class TaskModel: Object {
 
 // タスクごと日毎スケジュール
 class TaskScheduleModel: Object {
-    @objc dynamic var taskScheduleId: Int = 0 // タスクスケジュールID primarykey
-    @objc dynamic var taskId: Int = 0 // タスクID relationkey
+    @objc dynamic var taskScheduleId: String = NSUUID().uuidString // タスクスケジュールID primarykey
+    @objc dynamic var taskId: String = nil // タスクID relationkey
     @objc dynamic var scheduleStartPageNumber: Int = 0 // 今日スタート予定のページ数
     @objc dynamic var scheduleEndPageNumber: Int = 0 // 今日終了予定のページ数
     @objc dynamic var endedPageNumber: Int = 0 // 今日実際に終了したページ数(やってない場合はstartPage - 1)
