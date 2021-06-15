@@ -17,6 +17,7 @@
 		A7539008265A480600951E6F /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7539006265A480600951E6F /* TaskCell.xib */; };
 		A753900A2663889000951E6F /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75390092663889000951E6F /* TaskModel.swift */; };
 		A753900C2667C2E400951E6F /* TaskInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753900B2667C2E400951E6F /* TaskInputViewController.swift */; };
+		A76A885E2678EB6200F611C1 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76A885D2678EB6200F611C1 /* extensions.swift */; };
 		E9CCCD38C1F302813E26DF8E /* Pods_NiccaScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFA051D4D017598EA5A3EDC /* Pods_NiccaScheduler.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		A7539006265A480600951E6F /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		A75390092663889000951E6F /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		A753900B2667C2E400951E6F /* TaskInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInputViewController.swift; sourceTree = "<group>"; };
+		A76A885D2678EB6200F611C1 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		DAFA051D4D017598EA5A3EDC /* Pods_NiccaScheduler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NiccaScheduler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -99,6 +101,7 @@
 				A7539006265A480600951E6F /* TaskCell.xib */,
 				A75390092663889000951E6F /* TaskModel.swift */,
 				A753900B2667C2E400951E6F /* TaskInputViewController.swift */,
+				A76A885D2678EB6200F611C1 /* extensions.swift */,
 			);
 			path = NiccaScheduler;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				A753900C2667C2E400951E6F /* TaskInputViewController.swift in Sources */,
 				A7539007265A480600951E6F /* TaskCell.swift in Sources */,
 				A7506610264296F70010A366 /* ViewController.swift in Sources */,
+				A76A885E2678EB6200F611C1 /* extensions.swift in Sources */,
 				A753900A2663889000951E6F /* TaskModel.swift in Sources */,
 				A750660C264296F70010A366 /* AppDelegate.swift in Sources */,
 				A750660E264296F70010A366 /* SceneDelegate.swift in Sources */,

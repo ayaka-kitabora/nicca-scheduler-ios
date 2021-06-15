@@ -32,6 +32,10 @@ class TaskInputViewController: UIViewController, UITextFieldDelegate {
         try! RealmInstance.write {
             RealmInstance.add(instanceTaskModel)
         }
+        
+        // Notificationで通知を送る
+        NotificationCenter.default.post(name: .submitTodo, object: nil)
+        
         // 前のページに戻る
         self.navigationController?.popViewController(animated: true)
         
