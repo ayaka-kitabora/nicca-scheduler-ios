@@ -33,6 +33,8 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         taskTableView.delegate = self
         taskTableView.dataSource = self
         taskTableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        // Notificationの登録
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateTable), name: .submitTodo, object: nil)
         
         // Realm
         // df.dateFormat = "yyyy-MM-dd"
@@ -77,6 +79,10 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return TaskListResluts.count
+    }
+    
+    @objc private func updateTable(_ notification: Notification) {
+        taskTableView.reloadData()
     }
     
 }
