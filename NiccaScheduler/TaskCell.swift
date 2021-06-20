@@ -10,7 +10,7 @@ import UIKit
 class TaskCell: UITableViewCell {
 
     @IBOutlet weak var taskLabel: UILabel!
-    @IBOutlet weak var checkImageView: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +21,7 @@ class TaskCell: UITableViewCell {
 
     }
     
+    @IBAction func tapCheckButton(_ sender: CheckBox) {
+        print(sender.isChecked)
+    }
 }
