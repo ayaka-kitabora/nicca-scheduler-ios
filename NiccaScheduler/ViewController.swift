@@ -39,8 +39,14 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         // Realm
         // df.dateFormat = "yyyy-MM-dd"
         //let currentDay = df.string(from: date)
-        let RealmInstance = try! Realm()
+        var config = Realm.Configuration()
+        
+        config.schemaVersion = 1
+        let RealmInstance = try!(Realm(configuration: config))
         TaskListResluts = RealmInstance.objects(TaskModel.self)
+        if (TaskListResluts.count > 0) {
+            
+        }
         /*
         if (taskList.count > 0) {
             todayTaskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", currentDay)
