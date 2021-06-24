@@ -20,6 +20,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     
     // let taskList = ["Udemy 240〜250", "Udemy 251〜261", "Udemy 262〜272"]
     var TaskListResluts: Results<TaskModel>!
+    var currentTaskScheduleList: Results<TaskScheduleModel>!
     
     let date = Date()
     let df = DateFormatter()
@@ -37,26 +38,42 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateTable), name: .submitTodo, object: nil)
         
         // Realm
-        // df.dateFormat = "yyyy-MM-dd"
-        //let currentDay = df.string(from: date)
-        var config = Realm.Configuration()
+        let currentDay = Date() // 一旦今日にするが、カレンダーの選択日に指定する
         
-        config.schemaVersion = 1
-        let RealmInstance = try!(Realm(configuration: config))
-        TaskListResluts = RealmInstance.objects(TaskModel.self)
+        let RealmInstance = try! Realm()
+        TaskListResluts = RealmInstance.objects(TaskModel.self) // TODO: 期間中のタスクに絞る
         if (TaskListResluts.count > 0) {
             
-        }
-        /*
-        if (taskList.count > 0) {
-            todayTaskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", currentDay)
-            print(taskList)
-            // taskがあればスケジュールを取得、なければ作成
-            for value in todayTaskScheduleList {
-                print("\(value)")
+            for task in TaskListResluts {
+                print("\(task)")
+                currentTaskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", currentDay).filter("taskId == %@", task.taskId)
+                if (currentTaskScheduleList.count == 0) {
+                    // その日の分のタスクスケジュールを作成する
+                    
+                    let instanceTaskScheduleModel: TaskScheduleModel = TaskScheduleModel()
+                    instanceTaskScheduleModel.taskId = task.taskId
+                    // 今日は何ページからやる予定か計算
+                    // TODO: 一旦 page1DayCountから割って算出するけど、実際の前日終了ページ数(endedPageNumber)から計算しなおす必要がある
+                    let dayInterval = Int((Calendar.current.dateComponents([.day], from: task.scheduleStartAt!, to: currentDay)).day!)
+                    
+                    // 前日までに終わっている予定のページ数
+                    let beforeEndedPageNumber = dayInterval * task.page1DayCount
+                    
+                    instanceTaskScheduleModel.scheduleStartPageNumber = beforeEndedPageNumber + 1
+                    
+                    instanceTaskScheduleModel.scheduleEndPageNumber = beforeEndedPageNumber + task.page1DayCount
+                    
+                    instanceTaskScheduleModel.executionDate = currentDay
+                    
+                    try! RealmInstance.write {
+                        RealmInstance.add(instanceTaskScheduleModel)
+                    }
+                    // Notificationで通知を送る
+                    NotificationCenter.default.post(name: .submitTodo, object: nil)
+                    
+                }
             }
         }
-        */
     }
     
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)

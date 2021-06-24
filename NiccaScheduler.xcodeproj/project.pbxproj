@@ -19,6 +19,7 @@
 		A753900C2667C2E400951E6F /* TaskInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753900B2667C2E400951E6F /* TaskInputViewController.swift */; };
 		A76A885E2678EB6200F611C1 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76A885D2678EB6200F611C1 /* extensions.swift */; };
 		A76A8860267F823700F611C1 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76A885F267F823700F611C1 /* CheckBox.swift */; };
+		A76A88652682C29300F611C1 /* formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76A88642682C29300F611C1 /* formatter.swift */; };
 		E9CCCD38C1F302813E26DF8E /* Pods_NiccaScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFA051D4D017598EA5A3EDC /* Pods_NiccaScheduler.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		A753900B2667C2E400951E6F /* TaskInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInputViewController.swift; sourceTree = "<group>"; };
 		A76A885D2678EB6200F611C1 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		A76A885F267F823700F611C1 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		A76A88642682C29300F611C1 /* formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = formatter.swift; sourceTree = "<group>"; };
 		DAFA051D4D017598EA5A3EDC /* Pods_NiccaScheduler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NiccaScheduler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -92,21 +94,54 @@
 		A750660A264296F70010A366 /* NiccaScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				A76A88682682C3D000F611C1 /* controller */,
+				A76A88672682C38100F611C1 /* models */,
+				A76A88662682C36900F611C1 /* components */,
+				A76A88632682C27400F611C1 /* utils */,
 				A750660B264296F70010A366 /* AppDelegate.swift */,
 				A750660D264296F70010A366 /* SceneDelegate.swift */,
-				A750660F264296F70010A366 /* ViewController.swift */,
 				A7506611264296F70010A366 /* Main.storyboard */,
 				A7506614264297010010A366 /* Assets.xcassets */,
 				A7506616264297010010A366 /* LaunchScreen.storyboard */,
 				A7506619264297010010A366 /* Info.plist */,
-				A7539005265A480600951E6F /* TaskCell.swift */,
-				A7539006265A480600951E6F /* TaskCell.xib */,
-				A75390092663889000951E6F /* TaskModel.swift */,
-				A753900B2667C2E400951E6F /* TaskInputViewController.swift */,
 				A76A885D2678EB6200F611C1 /* extensions.swift */,
 				A76A885F267F823700F611C1 /* CheckBox.swift */,
 			);
 			path = NiccaScheduler;
+			sourceTree = "<group>";
+		};
+		A76A88632682C27400F611C1 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				A76A88642682C29300F611C1 /* formatter.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		A76A88662682C36900F611C1 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				A7539005265A480600951E6F /* TaskCell.swift */,
+				A7539006265A480600951E6F /* TaskCell.xib */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		A76A88672682C38100F611C1 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				A75390092663889000951E6F /* TaskModel.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		A76A88682682C3D000F611C1 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				A753900B2667C2E400951E6F /* TaskInputViewController.swift */,
+				A750660F264296F70010A366 /* ViewController.swift */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +265,7 @@
 				A7506610264296F70010A366 /* ViewController.swift in Sources */,
 				A76A885E2678EB6200F611C1 /* extensions.swift in Sources */,
 				A753900A2663889000951E6F /* TaskModel.swift in Sources */,
+				A76A88652682C29300F611C1 /* formatter.swift in Sources */,
 				A750660C264296F70010A366 /* AppDelegate.swift in Sources */,
 				A750660E264296F70010A366 /* SceneDelegate.swift in Sources */,
 			);
