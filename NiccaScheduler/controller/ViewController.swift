@@ -36,9 +36,61 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         taskTableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "Cell")
         // Notificationの登録
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateTable), name: .submitTodo, object: nil)
+        createSchedule(date: Date())
+    }
+    
+    fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
+    fileprivate lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // セルを取得する
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TaskCell
         
-        // Realm
-        let currentDay = Date() // 一旦今日にするが、カレンダーの選択日に指定する
+        // タップ時のハイライトの色を無効に
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        print(currentTaskScheduleList)
+        
+        if (currentTaskScheduleList.count > 0) {
+            let taskSchedule = currentTaskScheduleList[indexPath.row]
+            print(taskSchedule)
+            let task = taskSchedule.task.first
+            print(task)
+            if (task == nil) {
+                cell.taskLabel.text = "タスクがありません"
+                return cell
+            }
+            let text = "\(String(describing: task!.taskName ?? nil))\(taskSchedule.scheduleStartPageNumber)〜\( taskSchedule.scheduleEndPageNumber)"
+            cell.taskLabel.text = text
+            print(text)
+        }
+        
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return currentTaskScheduleList.count
+    }
+    
+    @objc private func updateTable(_ notification: Notification) {
+        taskTableView.reloadData()
+    }
+    
+    @objc private func createSchedule(date: Date) {
+        print("createSchedule")
+        let currentDay = date
+        let calendar = Calendar.current
+        let startOfDay =  calendar.startOfDay(for: date)
+        let endOfDay =  calendar.endOfDay(for: date)
         
         let RealmInstance = try! Realm()
         TaskListResluts = RealmInstance.objects(TaskModel.self) // TODO: 期間中のタスクに絞る
@@ -46,7 +98,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
             
             for task in TaskListResluts {
                 print("\(task)")
-                currentTaskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", currentDay).filter("taskId == %@", task.taskId)
+                currentTaskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate >= %@ AND executionDate <= %@", startOfDay, endOfDay).filter("taskId == %@", task.taskId)
                 if (currentTaskScheduleList.count == 0) {
                     // その日の分のタスクスケジュールを作成する
                     
@@ -75,37 +127,11 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
             }
         }
     }
-    
-    fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
-    fileprivate lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
-    
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // セルを取得する
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TaskCell
-        let task = TaskListResluts[indexPath.row]
-        cell.taskLabel.text = task.taskName
+    // カレンダー日時取得
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
+        print(date)
         
-        // タップ時のハイライトの色を無効に
-        cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TaskListResluts.count
-    }
-    
-    @objc private func updateTable(_ notification: Notification) {
-        taskTableView.reloadData()
+        createSchedule(date: date)
     }
     
 }

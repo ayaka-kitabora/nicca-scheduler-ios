@@ -26,7 +26,7 @@ class TaskInputViewController: UIViewController, UITextFieldDelegate {
         let instanceTaskModel: TaskModel = TaskModel()
         instanceTaskModel.taskName = self.taskNameTextField.text
         instanceTaskModel.pageAllCount =  Int(self.pageAllCountTextField.text!)!
-        let scheduleEndAt = DateUtils.dateFromString(string: self.scheduleEndAtTextField.text!, format: "yyyy-MM-dd HH:mm:ss Z")
+        let scheduleEndAt = DateUtils.dateFromString(string: scheduleEndAtTextField.text!, format: "yyyy-MM-dd")
         instanceTaskModel.scheduleEndAt = scheduleEndAt
         // TODO: 開始日は一旦本日縛り。変更できるように
         let scheduleStartAt = Date()
