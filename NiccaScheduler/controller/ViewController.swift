@@ -63,7 +63,6 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
             let taskSchedule = currentTaskScheduleList[indexPath.row]
             print(taskSchedule)
             let task = taskSchedule.task.first
-            print(task)
             if (task == nil) {
                 cell.taskLabel.text = "タスクがありません"
                 return cell
@@ -116,9 +115,10 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
                     instanceTaskScheduleModel.scheduleEndPageNumber = beforeEndedPageNumber + task.page1DayCount
                     
                     instanceTaskScheduleModel.executionDate = currentDay
-                    
                     try! RealmInstance.write {
-                        RealmInstance.add(instanceTaskScheduleModel)
+                     
+                        task.taskSchedules.append(instanceTaskScheduleModel)
+                        // これだとリレーションが保存されない RealmInstance.add(instanceTaskScheduleModel)
                     }
                     // Notificationで通知を送る
                     NotificationCenter.default.post(name: .submitTodo, object: nil)
