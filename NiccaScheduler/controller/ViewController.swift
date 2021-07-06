@@ -70,7 +70,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
                 cell.taskLabel.text = "タスクがありません"
                 return cell
             }
-            let text = "\(String(describing: task!.taskName ?? nil))\(taskSchedule.scheduleStartPageNumber)〜\( taskSchedule.scheduleEndPageNumber)"
+            let text = "\(String(describing: task!.taskName!)) \(taskSchedule.scheduleStartPageNumber)〜\( taskSchedule.scheduleEndPageNumber)"
             cell.taskLabel.text = text
             print(text)
         }
@@ -102,8 +102,6 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
                 currentTaskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate >= %@ AND executionDate <= %@", startOfDay, endOfDay).filter("taskId == %@", task.taskId)
                 if (currentTaskScheduleList.count == 0) {
                     // その日の分のタスクスケジュールを作成する
-                    // TODO 0 - pageAllCount 内なら保存
-                    // 今日は何ページからやる予定か計算
                     // TODO: 一旦 page1DayCountから割って算出するけど、実際の前日終了ページ数(endedPageNumber)から計算しなおす必要がある
                     let dayInterval = Int((Calendar.current.dateComponents([.day], from: task.scheduleStartAt!, to: currentDay)).day!)
                     
