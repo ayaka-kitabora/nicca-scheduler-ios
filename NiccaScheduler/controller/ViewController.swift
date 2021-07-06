@@ -27,6 +27,9 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // TODO: デバックコード あとで消す
+        print("Realm file-----")
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         // カレンダー
         self.calendar.dataSource = self
         self.calendar.delegate = self
@@ -101,18 +104,30 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
                 if (currentTaskScheduleList.count == 0) {
                     // その日の分のタスクスケジュールを作成する
                     
-                    let instanceTaskScheduleModel: TaskScheduleModel = TaskScheduleModel()
-                    instanceTaskScheduleModel.taskId = task.taskId
+                    // TODO 0 - pageAllCount 内なら保存
+                    
                     // 今日は何ページからやる予定か計算
                     // TODO: 一旦 page1DayCountから割って算出するけど、実際の前日終了ページ数(endedPageNumber)から計算しなおす必要がある
                     let dayInterval = Int((Calendar.current.dateComponents([.day], from: task.scheduleStartAt!, to: currentDay)).day!)
                     
                     // 前日までに終わっている予定のページ数
                     let beforeEndedPageNumber = dayInterval * task.page1DayCount
+                    // その日にやる予定の開始ページ
+                    let scheduleStartPageNumber = beforeEndedPageNumber + 1
                     
-                    instanceTaskScheduleModel.scheduleStartPageNumber = beforeEndedPageNumber + 1
+                    // その日にやる予定の終了ページ
+                    let scheduleEndPageNumber = beforeEndedPageNumber + task.page1DayCount
+                    if (scheduleStartPageNumber < 0 || scheduleEndPageNumber > task.pageAllCount) {
+                        return
+                    }
                     
-                    instanceTaskScheduleModel.scheduleEndPageNumber = beforeEndedPageNumber + task.page1DayCount
+                    let instanceTaskScheduleModel: TaskScheduleModel = TaskScheduleModel()
+                    instanceTaskScheduleModel.taskId = task.taskId
+                    
+                    
+                    instanceTaskScheduleModel.scheduleStartPageNumber = scheduleStartPageNumber
+                    
+                    instanceTaskScheduleModel.scheduleEndPageNumber = scheduleEndPageNumber
                     
                     instanceTaskScheduleModel.executionDate = currentDay
                     try! RealmInstance.write {
@@ -120,6 +135,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
                         task.taskSchedules.append(instanceTaskScheduleModel)
                         // これだとリレーションが保存されない RealmInstance.add(instanceTaskScheduleModel)
                     }
+                    
                     // Notificationで通知を送る
                     NotificationCenter.default.post(name: .submitTodo, object: nil)
                     
