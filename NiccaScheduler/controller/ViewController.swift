@@ -16,6 +16,8 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     @IBOutlet weak var taskTableView: UITableView!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var selectedDate: UILabel!
+    
     // TODO: データ構造を後で見直す
     
     // let taskList = ["Udemy 240〜250", "Udemy 251〜261", "Udemy 262〜272"]
@@ -89,6 +91,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     
     @objc private func createSchedule(date: Date) {
         let currentDay = date
+        selectedDate.text = DateUtils.stringFromDate(date: currentDay, format: "YYYY-MM-dd")
         let calendar = Calendar.current
         let startOfDay =  calendar.startOfDay(for: date)
         let endOfDay =  calendar.endOfDay(for: date)
