@@ -82,6 +82,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (currentTaskScheduleList == nil) { return 0 }
         return currentTaskScheduleList.count
     }
     
