@@ -24,16 +24,12 @@ class TaskCell: UITableViewCell {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        print("setSelected")
-        print(selected)
         super.setSelected(selected, animated: animated)
-
     }
     
     @IBAction func tapCheckButton(_ sender: CheckBox) {
-        print(sender)
-        print(taskScheduleId)
-        print(sender.isChecked)
+        let isChecked = !checkbox.isChecked
+        checkbox.setChecked(isChecked)
         doneTaskSchedule(isChecked: sender.isChecked)
     }
     
@@ -43,7 +39,7 @@ class TaskCell: UITableViewCell {
         let taskSchedule = taskScheduleResult[0]
 
         try! RealmInstance.write{
-            if (isChecked) {
+            if (isChecked == true) {
                 // 終了予定のページを実際に終了したページとする
                 // TODO: 実際に終了したページをユーザーが入力できるようにしたい
                 let scheduleEndPageNumber = taskSchedule.scheduleEndPageNumber
