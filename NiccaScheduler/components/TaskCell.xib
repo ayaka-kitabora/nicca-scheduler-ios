@@ -53,6 +53,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="checkbox" destination="39a-L4-1xX" id="iwU-Lr-H3a"/>
                 <outlet property="taskLabel" destination="Jlv-Jh-DhG" id="3xS-9Y-hAd"/>
             </connections>
             <point key="canvasLocation" x="13.043478260869566" y="51.5625"/>

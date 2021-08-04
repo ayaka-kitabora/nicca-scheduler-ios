@@ -18,9 +18,6 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var selectedDate: UILabel!
     
-    // TODO: データ構造を後で見直す
-    
-    // let taskList = ["Udemy 240〜250", "Udemy 251〜261", "Udemy 262〜272"]
     var TaskListResluts: Results<TaskModel>!
     var currentTaskScheduleList: Results<TaskScheduleModel>!
     
@@ -74,6 +71,16 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
             }
             let text = "\(String(describing: task!.taskName!)) \(taskSchedule.scheduleStartPageNumber)〜\( taskSchedule.scheduleEndPageNumber)"
             cell.taskLabel.text = text
+            cell.taskScheduleId = taskSchedule.taskScheduleId
+            cell.endedPageNumber = taskSchedule.endedPageNumber
+            cell.scheduleEndPageNumber = taskSchedule.scheduleEndPageNumber
+            
+            var isChecked = false
+            if (taskSchedule.endedPageNumber > 0 && taskSchedule.scheduleEndPageNumber > 0 && taskSchedule.scheduleEndPageNumber <= taskSchedule.endedPageNumber) {
+                isChecked = true
+            }
+            
+            cell.dataInit(isChecked)
             print(text)
         }
         

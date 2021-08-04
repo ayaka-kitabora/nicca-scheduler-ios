@@ -33,4 +33,8 @@ class CheckBox: UIButton {
             isChecked = !isChecked
         }
     }
+    
+    func setChecked(_ check: Bool){
+        isChecked = check
+    }
 }
