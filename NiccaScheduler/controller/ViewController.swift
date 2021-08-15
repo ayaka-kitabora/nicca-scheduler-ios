@@ -98,16 +98,13 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     @objc private func createSchedule(date: Date) {
         let currentDay = date
         selectedDate.text = DateUtils.stringFromDate(date: currentDay, format: "YYYY-MM-dd")
-        let calendar = Calendar.current
-        let startOfDay =  calendar.startOfDay(for: date)
-        let endOfDay =  calendar.endOfDay(for: date)
         currentTaskScheduleList = nil
         
         let RealmInstance = try! Realm()
         TaskListResluts = RealmInstance.objects(TaskModel.self) // TODO: 期間中のタスクに絞る
         if (TaskListResluts.count > 0) {
             for task in TaskListResluts {
-                let taskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate >= %@ AND executionDate <= %@", startOfDay, endOfDay).filter("taskId == %@", task.taskId)
+                let taskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", currentDay).filter("taskId == %@", task.taskId)
                 if (taskScheduleList.count == 0) {
                     // その日の分のタスクスケジュールを作成する
                     // TODO: 一旦 page1DayCountから割って算出するけど、実際の前日終了ページ数(endedPageNumber)から計算しなおす必要がある
@@ -138,7 +135,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
             }
         }
         // スケジュールを取得し直す
-        currentTaskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate >= %@ AND executionDate <= %@", startOfDay, endOfDay)
+        currentTaskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", currentDay)
         
     }
     // カレンダー日時取得
