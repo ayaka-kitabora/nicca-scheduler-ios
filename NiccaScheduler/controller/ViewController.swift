@@ -21,7 +21,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     var TaskListResluts: Results<TaskModel>!
     var currentTaskScheduleList: Results<TaskScheduleModel>!
     
-    let date = Date()
+    var currentDate = Date()
     let df = DateFormatter()
     
     override func viewDidLoad() {
@@ -59,11 +59,9 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         
         // タップ時のハイライトの色を無効に
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        print(currentTaskScheduleList)
         
         if (currentTaskScheduleList.count > 0) {
             let taskSchedule = currentTaskScheduleList[indexPath.row]
-            print(taskSchedule)
             let task = taskSchedule.task.first
             if (task == nil) {
                 cell.taskLabel.text = "タスクがありません"
@@ -81,7 +79,6 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
             }
             
             cell.dataInit(isChecked)
-            print(text)
         }
         
         
@@ -94,6 +91,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     }
     
     @objc private func updateTable(_ notification: Notification) {
+        createSchedule(date: currentDate)
         taskTableView.reloadData()
     }
     
@@ -109,9 +107,8 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         TaskListResluts = RealmInstance.objects(TaskModel.self) // TODO: 期間中のタスクに絞る
         if (TaskListResluts.count > 0) {
             for task in TaskListResluts {
-                print("\(task)")
-                currentTaskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate >= %@ AND executionDate <= %@", startOfDay, endOfDay).filter("taskId == %@", task.taskId)
-                if (currentTaskScheduleList.count == 0) {
+                let taskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate >= %@ AND executionDate <= %@", startOfDay, endOfDay).filter("taskId == %@", task.taskId)
+                if (taskScheduleList.count == 0) {
                     // その日の分のタスクスケジュールを作成する
                     // TODO: 一旦 page1DayCountから割って算出するけど、実際の前日終了ページ数(endedPageNumber)から計算しなおす必要がある
                     let dayInterval = Int((Calendar.current.dateComponents([.day], from: task.scheduleStartAt!, to: currentDay)).day!)
@@ -140,14 +137,15 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
                 }
             }
         }
-        // Notificationで通知を送る
-        NotificationCenter.default.post(name: .submitTodo, object: nil)
+        // スケジュールを取得し直す
+        currentTaskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate >= %@ AND executionDate <= %@", startOfDay, endOfDay)
+        
     }
     // カレンダー日時取得
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
-        print(date)
-        
-        createSchedule(date: date)
+        currentDate = date
+        // Notificationで通知を送る
+        NotificationCenter.default.post(name: .submitTodo, object: nil)
     }
     
 }
