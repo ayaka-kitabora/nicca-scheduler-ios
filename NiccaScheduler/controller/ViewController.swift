@@ -10,8 +10,7 @@ import FSCalendar
 import CalculateCalendarLogic
 import RealmSwift
 
-class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance,
-                      UITableViewDelegate, UITableViewDataSource{
+class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance {
 
     @IBOutlet weak var taskTableView: UITableView!
     @IBOutlet weak var calendar: FSCalendar!
@@ -32,10 +31,6 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         // カレンダー
         self.calendar.dataSource = self
         self.calendar.delegate = self
-        // テーブル
-        taskTableView.delegate = self
-        taskTableView.dataSource = self
-        taskTableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "Cell")
         // Notificationの登録
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateTable), name: .submitTodo, object: nil)
         createSchedule(date: Date())
@@ -48,47 +43,16 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         return formatter
     }()
     
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // セルを取得する
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TaskCell
-        
-        // タップ時のハイライトの色を無効に
-        cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        
-        if (currentTaskScheduleList.count > 0) {
-            let taskSchedule = currentTaskScheduleList[indexPath.row]
-            let task = taskSchedule.task.first
-            if (task == nil) {
-                cell.taskLabel.text = "タスクがありません"
-                return cell
-            }
-            let text = "\(String(describing: task!.taskName!)) \(taskSchedule.scheduleStartPageNumber)〜\( taskSchedule.scheduleEndPageNumber)"
-            cell.taskLabel.text = text
-            cell.taskScheduleId = taskSchedule.taskScheduleId
-            cell.endedPageNumber = taskSchedule.endedPageNumber
-            cell.scheduleEndPageNumber = taskSchedule.scheduleEndPageNumber
-            
-            var isChecked = false
-            if (taskSchedule.endedPageNumber > 0 && taskSchedule.scheduleEndPageNumber > 0 && taskSchedule.scheduleEndPageNumber <= taskSchedule.endedPageNumber) {
-                isChecked = true
-            }
-            
-            cell.dataInit(isChecked)
+    @IBOutlet private weak var tableView: UITableView! {
+        didSet {
+            tableView.dataSource = dataSource
+            tableView.delegate = dataSource
+            dataSource.currentTaskScheduleList = currentTaskScheduleList
+            taskTableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "Cell")
         }
-        
-        
-        return cell
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (currentTaskScheduleList == nil) { return 0 }
-        return currentTaskScheduleList.count
-    }
+    private let dataSource = TaskScheduleTableDataSource()
     
     @objc private func updateTable(_ notification: Notification) {
         createSchedule(date: currentDate)

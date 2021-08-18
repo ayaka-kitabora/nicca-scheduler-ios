@@ -21,6 +21,7 @@
 		A76A8860267F823700F611C1 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76A885F267F823700F611C1 /* CheckBox.swift */; };
 		A76A88652682C29300F611C1 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76A88642682C29300F611C1 /* Formatter.swift */; };
 		A798FD7C26CD2A6D00380EEB /* NotificationNameExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798FD7B26CD2A6D00380EEB /* NotificationNameExtensions.swift */; };
+		A798FD8226CD2DF600380EEB /* TaskScheduleTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798FD8126CD2DF600380EEB /* TaskScheduleTableDataSource.swift */; };
 		E9CCCD38C1F302813E26DF8E /* Pods_NiccaScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFA051D4D017598EA5A3EDC /* Pods_NiccaScheduler.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		A76A885F267F823700F611C1 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		A76A88642682C29300F611C1 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		A798FD7B26CD2A6D00380EEB /* NotificationNameExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtensions.swift; sourceTree = "<group>"; };
+		A798FD8126CD2DF600380EEB /* TaskScheduleTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskScheduleTableDataSource.swift; sourceTree = "<group>"; };
 		DAFA051D4D017598EA5A3EDC /* Pods_NiccaScheduler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NiccaScheduler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -123,6 +125,7 @@
 		A76A88662682C36900F611C1 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				A798FD7E26CD2B4C00380EEB /* TaskScheduleTable */,
 				A798FD7926CD29F600380EEB /* TaskCell */,
 			);
 			path = Module;
@@ -169,6 +172,14 @@
 				A76A885F267F823700F611C1 /* CheckBox.swift */,
 			);
 			path = CustomClass;
+			sourceTree = "<group>";
+		};
+		A798FD7E26CD2B4C00380EEB /* TaskScheduleTable */ = {
+			isa = PBXGroup;
+			children = (
+				A798FD8126CD2DF600380EEB /* TaskScheduleTableDataSource.swift */,
+			);
+			path = TaskScheduleTable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +302,7 @@
 				A7539007265A480600951E6F /* TaskCell.swift in Sources */,
 				A7506610264296F70010A366 /* ViewController.swift in Sources */,
 				A798FD7C26CD2A6D00380EEB /* NotificationNameExtensions.swift in Sources */,
+				A798FD8226CD2DF600380EEB /* TaskScheduleTableDataSource.swift in Sources */,
 				A76A885E2678EB6200F611C1 /* Calendar.swift in Sources */,
 				A753900A2663889000951E6F /* TaskModel.swift in Sources */,
 				A76A88652682C29300F611C1 /* Formatter.swift in Sources */,
