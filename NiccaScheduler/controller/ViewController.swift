@@ -10,9 +10,16 @@ import FSCalendar
 import CalculateCalendarLogic
 import RealmSwift
 
-class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance {
+class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance, UITableViewDelegate {
 
-    @IBOutlet weak var taskTableView: UITableView!
+    @IBOutlet weak var taskTableView: UITableView! {
+        didSet {
+            taskTableView.dataSource = dataSource
+            taskTableView.delegate = self
+            dataSource.currentTaskScheduleList = currentTaskScheduleList
+            taskTableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        }
+    }
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var selectedDate: UILabel!
@@ -22,6 +29,8 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     
     var currentDate = Date()
     let df = DateFormatter()
+
+    private let dataSource = TaskScheduleTableDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,20 +51,10 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
-    
-    @IBOutlet private weak var tableView: UITableView! {
-        didSet {
-            tableView.dataSource = dataSource
-            tableView.delegate = dataSource
-            dataSource.currentTaskScheduleList = currentTaskScheduleList
-            taskTableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        }
-    }
-    
-    private let dataSource = TaskScheduleTableDataSource()
-    
+  
     @objc private func updateTable(_ notification: Notification) {
         createSchedule(date: currentDate)
+        dataSource.currentTaskScheduleList = currentTaskScheduleList
         taskTableView.reloadData()
     }
     

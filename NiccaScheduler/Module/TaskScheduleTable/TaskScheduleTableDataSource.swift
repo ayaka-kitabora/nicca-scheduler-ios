@@ -56,7 +56,3 @@ extension TaskScheduleTableDataSource: UITableViewDataSource {
         return currentTaskScheduleList.count
     }
 }
-
-extension TaskScheduleTableDataSource: UITableViewDelegate {
-    
-}
