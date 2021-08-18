@@ -105,18 +105,36 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         if (TaskListResluts.count > 0) {
             for task in TaskListResluts {
                 let taskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", currentDay).filter("taskId == %@", task.taskId)
+                // 一旦その日のスケジュールがない場合に作成
+                // 終わったページを更新したタイミングで作成しなおす必要がある
                 if (taskScheduleList.count == 0) {
                     // その日の分のタスクスケジュールを作成する
                     // TODO: 一旦 page1DayCountから割って算出するけど、実際の前日終了ページ数(endedPageNumber)から計算しなおす必要がある
+                    // 何日間で行うか
                     let dayInterval = Int((Calendar.current.dateComponents([.day], from: task.scheduleStartAt!, to: currentDay)).day!)
+                    print("dayInterval")
+                    print(dayInterval)
                     
+                    if (dayInterval < 0) {
+                        continue
+                    }
                     // 前日までに終わっている予定のページ数
                     let beforeEndedPageNumber = dayInterval * task.page1DayCount
+                    
+                    print("beforeEndedPageNumber")
+                    print(beforeEndedPageNumber)
                     // その日にやる予定の開始ページ
                     let scheduleStartPageNumber = beforeEndedPageNumber + 1
                     
+                    print("scheduleStartPageNumber")
+                    print(scheduleStartPageNumber)
                     // その日にやる予定の終了ページ
                     let scheduleEndPageNumber = beforeEndedPageNumber + task.page1DayCount
+                    
+                    
+                    print("scheduleEndPageNumber")
+                    print(scheduleEndPageNumber)
+                    
                     if (scheduleStartPageNumber <= 0 || scheduleEndPageNumber > task.pageAllCount) {
                         continue
                     }

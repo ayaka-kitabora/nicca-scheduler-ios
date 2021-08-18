@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         var config = Realm.Configuration()
         
-        config.schemaVersion = 2
+        config.schemaVersion = 3
         Realm.Configuration.defaultConfiguration = config
         return true
     }

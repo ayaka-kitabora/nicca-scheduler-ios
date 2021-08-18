@@ -6,9 +6,7 @@
 //
 
 import Foundation
-extension Notification.Name {
-   static let submitTodo = Notification.Name("submitTodo")
-}
+
 extension Calendar {
     // https://qiita.com/tamadeveloper/items/8e4f68d586cc5b0f9a5a
 

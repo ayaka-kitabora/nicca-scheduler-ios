@@ -19,6 +19,7 @@ class TaskModel: Object {
     @objc dynamic var endedAt: Date? = nil // タスクが終了した日
     @objc dynamic var pageAllCount: Int = 0 // 全体のページ数
     @objc dynamic var page1DayCount: Int = 0 // 現在の１日に予定されているページ数
+    @objc dynamic var pageEndedCount: Int = 0 // 現時点で終了しているページ数
     
     let taskSchedules = List<TaskScheduleModel>() // 1:多の関係
     
