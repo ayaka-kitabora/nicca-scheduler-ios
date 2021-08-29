@@ -23,8 +23,8 @@
                                     <constraint firstAttribute="width" secondItem="s58-ra-Rr4" secondAttribute="height" multiplier="207:191" id="rbC-uE-w1j"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="headerHeight">
-                                        <real key="value" value="0.0"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="headerHeight">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -62,6 +62,9 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
                                         <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EI7-nC-zB7">
@@ -79,8 +82,11 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vX4-dY-WMl">
-                                <rect key="frame" x="0.0" y="88" width="414" height="344"/>
+                                <rect key="frame" x="0.0" y="132" width="414" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vX4-dY-WMl" secondAttribute="height" multiplier="69:50" id="bQj-Zc-f7k"/>
+                                </constraints>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -96,25 +102,35 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1b2-Pn-aJD">
+                                <rect key="frame" x="20" y="98" width="374" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.60515940189999995" green="0.72554868459999999" blue="0.71764880419999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="vX4-dY-WMl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3KC-ME-cgu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="s58-ra-Rr4" secondAttribute="bottom" constant="38" id="4TG-8u-1wB"/>
-                            <constraint firstItem="vX4-dY-WMl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5cn-jQ-sKl"/>
+                            <constraint firstItem="vX4-dY-WMl" firstAttribute="top" secondItem="1b2-Pn-aJD" secondAttribute="bottom" constant="10" id="ALL-B9-a3g"/>
                             <constraint firstItem="s58-ra-Rr4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="PeW-pn-EIS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EI7-nC-zB7" secondAttribute="trailing" constant="20" id="QaA-r5-utF"/>
                             <constraint firstAttribute="bottom" secondItem="EI7-nC-zB7" secondAttribute="bottom" constant="20" id="Rgh-0w-9qF"/>
                             <constraint firstItem="s58-ra-Rr4" firstAttribute="top" secondItem="vX4-dY-WMl" secondAttribute="bottom" constant="10" id="ay8-3C-vhS"/>
                             <constraint firstItem="s58-ra-Rr4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="feA-zu-XlA"/>
                             <constraint firstItem="vX4-dY-WMl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kwK-su-IuU"/>
+                            <constraint firstItem="1b2-Pn-aJD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="p66-fQ-x23"/>
+                            <constraint firstItem="1b2-Pn-aJD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="tk1-QW-f1D"/>
+                            <constraint firstItem="vX4-dY-WMl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uxN-Rh-r5P"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1b2-Pn-aJD" secondAttribute="trailing" constant="20" id="y6q-bS-tKp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fRv-Wb-Fcz"/>
                     <connections>
                         <outlet property="addButton" destination="EI7-nC-zB7" id="qO1-Rj-ylb"/>
                         <outlet property="calendar" destination="s58-ra-Rr4" id="XWi-vk-c1r"/>
+                        <outlet property="selectedDate" destination="1b2-Pn-aJD" id="3kj-X5-43q"/>
                         <outlet property="taskTableView" destination="vX4-dY-WMl" id="qr0-g1-h8n"/>
                     </connections>
                 </viewController>
