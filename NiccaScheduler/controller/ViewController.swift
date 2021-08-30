@@ -57,8 +57,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     }()
   
     @objc private func updateTable(_ notification: Notification) {
-        let currentTaskSchedule = CurrentTaskSchedule(date: currentDate)
-        currentTaskScheduleList = currentTaskSchedule.createTaskSchedule()
+        let currentTaskScheduleList = CurrentTaskScheduleModel.createTaskSchedule(with: currentDate)
         dataSource.currentTaskScheduleList = currentTaskScheduleList
         taskTableView.reloadData()
     }
