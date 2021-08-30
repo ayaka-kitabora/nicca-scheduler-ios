@@ -8,34 +8,43 @@
 import Foundation
 import RealmSwift
 
-class CurrentTaskSchedule {
-    var currentTaskScheduleList: Results<TaskScheduleModel>!
-    var selectedDate: String
-    var TaskListResluts: Results<TaskModel>!
-    var currentDay: Date
+class CurrentTaskScheduleModel: Object {
+    dynamic var currentTaskScheduleList: Results<TaskScheduleModel>!
+    @objc dynamic var currentDay: Date!
+    @objc dynamic var selectedDate: String!
+    dynamic var TaskListResluts: Results<TaskModel>!
     
-    init(date: Date) {
+    override required init() {
+        super.init()
+        
+    }
+}
+
+extension CurrentTaskScheduleModel {
+
+    static func createTaskSchedule(with date: Date) -> Results<TaskScheduleModel>! {
+        let model = self.init()
+        
         let calendar = Calendar.current
         let startTime = calendar.startOfDay(for: date)
-        self.currentDay = startTime
-        self.currentTaskScheduleList = nil
-        self.selectedDate = DateUtils.stringFromDate(date: currentDay, format: "YYYY-MM-dd")
-        self.TaskListResluts = nil
-    }
-    
-    func createTaskSchedule() -> Results<TaskScheduleModel>! {
+
+        model.currentDay = startTime
+        model.currentTaskScheduleList = nil
+        model.selectedDate = DateUtils.stringFromDate(date: model.currentDay, format: "YYYY-MM-dd")
+        model.TaskListResluts = nil
+        
         let RealmInstance = try! Realm()
-        TaskListResluts = RealmInstance.objects(TaskModel.self) // TODO: 期間中のタスクに絞る
-        if (TaskListResluts.count > 0) {
-            for task in TaskListResluts {
-                let taskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", currentDay).filter("taskId == %@", task.taskId)
+        model.TaskListResluts = RealmInstance.objects(TaskModel.self) // TODO: 期間中のタスクに絞る
+        if (model.TaskListResluts.count > 0) {
+            for task in model.TaskListResluts {
+                let taskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", model.currentDay as Any).filter("taskId == %@", task.taskId)
                 // 一旦その日のスケジュールがない場合に作成
                 // 終わったページを更新したタイミングで作成しなおす必要がある
                 if (taskScheduleList.count == 0) {
                     // その日の分のタスクスケジュールを作成する
                     // TODO: 一旦 page1DayCountから割って算出するけど、実際の前日終了ページ数(endedPageNumber)から計算しなおす必要がある
                     // 何日間で行うか
-                    let dayInterval = Int((Calendar.current.dateComponents([.day], from: task.scheduleStartAt!, to: currentDay)).day!)
+                    let dayInterval = Int((Calendar.current.dateComponents([.day], from: task.scheduleStartAt!, to: model.currentDay)).day!)
                     print("dayInterval")
                     print(dayInterval)
                     
@@ -67,7 +76,7 @@ class CurrentTaskSchedule {
                     instanceTaskScheduleModel.taskId = task.taskId
                     instanceTaskScheduleModel.scheduleStartPageNumber = scheduleStartPageNumber
                     instanceTaskScheduleModel.scheduleEndPageNumber = scheduleEndPageNumber
-                    instanceTaskScheduleModel.executionDate = currentDay
+                    instanceTaskScheduleModel.executionDate = model.currentDay
                     
                     try! RealmInstance.write {
                         task.taskSchedules.append(instanceTaskScheduleModel)
@@ -77,8 +86,7 @@ class CurrentTaskSchedule {
             }
         }
         // スケジュールを取得し直す
-        currentTaskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", currentDay)
-        return currentTaskScheduleList
+        model.currentTaskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", model.currentDay as Any)
+        return model.currentTaskScheduleList
     }
-    
 }

@@ -136,6 +136,7 @@
 		A76A88672682C38100F611C1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A798FD8326CD3FBE00380EEB /* CurrentTaskSchedule.swift */,
 				A75390092663889000951E6F /* TaskModel.swift */,
 			);
 			path = Model;
@@ -164,7 +165,6 @@
 			children = (
 				A76A885D2678EB6200F611C1 /* Calendar.swift */,
 				A798FD7B26CD2A6D00380EEB /* NotificationNameExtensions.swift */,
-				A798FD8326CD3FBE00380EEB /* CurrentTaskSchedule.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
