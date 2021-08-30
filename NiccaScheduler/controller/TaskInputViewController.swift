@@ -69,7 +69,7 @@ class TaskInputViewController: UIViewController, UITextFieldDelegate {
         instanceTaskModel.pageAllCount =  Int(self.pageAllCountTextField.text!)!
         let scheduleEndAt = DateUtils.dateFromString(string: scheduleEndAtTextField.text!, format: "yyyy-MM-dd")
         instanceTaskModel.scheduleEndAt = scheduleEndAt
-        let scheduleEndAt = DateUtils.dateFromString(string: scheduleStartAtTextField.text!, format: "yyyy-MM-dd")
+        let scheduleStartAt = DateUtils.dateFromString(string: scheduleStartAtTextField.text!, format: "yyyy-MM-dd")
         instanceTaskModel.scheduleStartAt = scheduleStartAt
         
         // タスク予定は何日間か計算
