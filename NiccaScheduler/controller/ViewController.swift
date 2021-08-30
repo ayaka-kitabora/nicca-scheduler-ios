@@ -43,8 +43,9 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         // Notificationの登録
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateTable), name: .submitTodo, object: nil)
         
-        let currentTaskSchedule = CurrentTaskSchedule(date: currentDate)
-        currentTaskScheduleList = currentTaskSchedule.createTaskSchedule()
+        selectedDate.text = DateUtils.stringFromDate(date: currentDate, format: "YYYY-MM-dd")
+        // Notificationで通知を送る
+        NotificationCenter.default.post(name: .submitTodo, object: nil)
         
     }
     

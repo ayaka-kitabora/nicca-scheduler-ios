@@ -15,7 +15,9 @@ class CurrentTaskSchedule {
     var currentDay: Date
     
     init(date: Date) {
-        self.currentDay = date
+        let calendar = Calendar.current
+        let startTime = calendar.startOfDay(for: date)
+        self.currentDay = startTime
         self.currentTaskScheduleList = nil
         self.selectedDate = DateUtils.stringFromDate(date: currentDay, format: "YYYY-MM-dd")
         self.TaskListResluts = nil
