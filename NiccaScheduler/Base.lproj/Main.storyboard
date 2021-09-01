@@ -214,7 +214,7 @@
         <!--Done-->
         <scene sceneID="CVA-u1-gxb">
             <objects>
-                <viewController title="Done" id="e6O-RS-h2U" sceneMemberID="viewController">
+                <viewController title="Done" id="e6O-RS-h2U" customClass="DoneViewController" customModule="NiccaScheduler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ixf-cg-HRs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -223,7 +223,7 @@
                                 <rect key="frame" x="0.0" y="86" width="414" height="346"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="DONE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXY-fd-lM4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DONE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXY-fd-lM4">
                                 <rect key="frame" x="20" y="54" width="374" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -234,12 +234,15 @@
                         <color key="backgroundColor" red="0.57418668269999995" green="0.72951757910000004" blue="0.71764892339999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Rub-57-ExM" firstAttribute="top" secondItem="gXY-fd-lM4" secondAttribute="bottom" constant="10" id="8fs-Iw-G9L"/>
-                            <constraint firstItem="gXY-fd-lM4" firstAttribute="trailing" secondItem="Hct-jQ-lRM" secondAttribute="trailing" constant="20" id="MKP-dO-bg1"/>
+                            <constraint firstItem="Hct-jQ-lRM" firstAttribute="trailing" secondItem="gXY-fd-lM4" secondAttribute="trailing" constant="20" id="R7w-g2-M54"/>
                             <constraint firstItem="gXY-fd-lM4" firstAttribute="leading" secondItem="Hct-jQ-lRM" secondAttribute="leading" constant="20" id="eUc-o4-3C0"/>
                             <constraint firstItem="gXY-fd-lM4" firstAttribute="top" secondItem="Hct-jQ-lRM" secondAttribute="top" constant="10" id="iJh-NF-x8Z"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="DONE" id="Vcy-yP-8V0"/>
+                    <connections>
+                        <outlet property="doneScheduleTable" destination="Rub-57-ExM" id="8bn-Fc-PIk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8kE-Yf-eDo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -252,7 +255,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rOl-02-cvD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.57418668269999995" green="0.72951757910000004" blue="0.71764892339999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="rgI-ez-b0p" kind="relationship" relationship="viewControllers" id="ZVf-t9-vzZ"/>

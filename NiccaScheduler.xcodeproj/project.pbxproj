@@ -22,7 +22,10 @@
 		A76A88652682C29300F611C1 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76A88642682C29300F611C1 /* Formatter.swift */; };
 		A798FD7C26CD2A6D00380EEB /* NotificationNameExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798FD7B26CD2A6D00380EEB /* NotificationNameExtensions.swift */; };
 		A798FD8226CD2DF600380EEB /* TaskScheduleTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798FD8126CD2DF600380EEB /* TaskScheduleTableDataSource.swift */; };
-		A798FD8426CD3FBE00380EEB /* CurrentTaskSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798FD8326CD3FBE00380EEB /* CurrentTaskSchedule.swift */; };
+		A798FD8426CD3FBE00380EEB /* CurrentTaskScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798FD8326CD3FBE00380EEB /* CurrentTaskScheduleModel.swift */; };
+		A7EE4B8326DEF7AF00D23728 /* DoneTaskScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EE4B8226DEF7AF00D23728 /* DoneTaskScheduleModel.swift */; };
+		A7EE4B8626DEFB7200D23728 /* DoneScheduleTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EE4B8526DEFB7200D23728 /* DoneScheduleTableDataSource.swift */; };
+		A7EE4B8826DEFCAB00D23728 /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EE4B8726DEFCAB00D23728 /* DoneViewController.swift */; };
 		E9CCCD38C1F302813E26DF8E /* Pods_NiccaScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFA051D4D017598EA5A3EDC /* Pods_NiccaScheduler.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +49,10 @@
 		A76A88642682C29300F611C1 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		A798FD7B26CD2A6D00380EEB /* NotificationNameExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtensions.swift; sourceTree = "<group>"; };
 		A798FD8126CD2DF600380EEB /* TaskScheduleTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskScheduleTableDataSource.swift; sourceTree = "<group>"; };
-		A798FD8326CD3FBE00380EEB /* CurrentTaskSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTaskSchedule.swift; sourceTree = "<group>"; };
+		A798FD8326CD3FBE00380EEB /* CurrentTaskScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTaskScheduleModel.swift; sourceTree = "<group>"; };
+		A7EE4B8226DEF7AF00D23728 /* DoneTaskScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTaskScheduleModel.swift; sourceTree = "<group>"; };
+		A7EE4B8526DEFB7200D23728 /* DoneScheduleTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneScheduleTableDataSource.swift; sourceTree = "<group>"; };
+		A7EE4B8726DEFCAB00D23728 /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DoneViewController.swift; path = NiccaScheduler/controller/DoneViewController.swift; sourceTree = SOURCE_ROOT; };
 		DAFA051D4D017598EA5A3EDC /* Pods_NiccaScheduler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NiccaScheduler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -127,6 +133,7 @@
 		A76A88662682C36900F611C1 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				A7EE4B8426DEFADC00D23728 /* DoneScheduleTable */,
 				A798FD7E26CD2B4C00380EEB /* TaskScheduleTable */,
 				A798FD7926CD29F600380EEB /* TaskCell */,
 			);
@@ -136,7 +143,8 @@
 		A76A88672682C38100F611C1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A798FD8326CD3FBE00380EEB /* CurrentTaskSchedule.swift */,
+				A798FD8326CD3FBE00380EEB /* CurrentTaskScheduleModel.swift */,
+				A7EE4B8226DEF7AF00D23728 /* DoneTaskScheduleModel.swift */,
 				A75390092663889000951E6F /* TaskModel.swift */,
 			);
 			path = Model;
@@ -147,6 +155,7 @@
 			children = (
 				A753900B2667C2E400951E6F /* TaskInputViewController.swift */,
 				A750660F264296F70010A366 /* ViewController.swift */,
+				A7EE4B8726DEFCAB00D23728 /* DoneViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -183,6 +192,14 @@
 				A798FD8126CD2DF600380EEB /* TaskScheduleTableDataSource.swift */,
 			);
 			path = TaskScheduleTable;
+			sourceTree = "<group>";
+		};
+		A7EE4B8426DEFADC00D23728 /* DoneScheduleTable */ = {
+			isa = PBXGroup;
+			children = (
+				A7EE4B8526DEFB7200D23728 /* DoneScheduleTableDataSource.swift */,
+			);
+			path = DoneScheduleTable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,9 +318,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A76A8860267F823700F611C1 /* CheckBox.swift in Sources */,
+				A7EE4B8826DEFCAB00D23728 /* DoneViewController.swift in Sources */,
 				A753900C2667C2E400951E6F /* TaskInputViewController.swift in Sources */,
 				A7539007265A480600951E6F /* TaskCell.swift in Sources */,
-				A798FD8426CD3FBE00380EEB /* CurrentTaskSchedule.swift in Sources */,
+				A7EE4B8326DEF7AF00D23728 /* DoneTaskScheduleModel.swift in Sources */,
+				A7EE4B8626DEFB7200D23728 /* DoneScheduleTableDataSource.swift in Sources */,
+				A798FD8426CD3FBE00380EEB /* CurrentTaskScheduleModel.swift in Sources */,
 				A7506610264296F70010A366 /* ViewController.swift in Sources */,
 				A798FD7C26CD2A6D00380EEB /* NotificationNameExtensions.swift in Sources */,
 				A798FD8226CD2DF600380EEB /* TaskScheduleTableDataSource.swift in Sources */,
