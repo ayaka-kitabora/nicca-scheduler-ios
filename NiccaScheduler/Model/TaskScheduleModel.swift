@@ -35,69 +35,57 @@ extension TaskScheduleModel {
 
     static func getDoneTaskSchedule(with date: Date) -> Results<TaskScheduleModel>! {
         let RealmInstance = try! Realm()
-        return RealmInstance.objects(TaskScheduleModel.self).filter("endedPageNumber > 0")
+        return RealmInstance.objects(TaskScheduleModel.self).filter("endedflag == true")
     }
     
-    static func createTaskSchedule(with date: Date) -> Results<TaskScheduleModel>! {
-        let calendar = Calendar.current
-        let startTime = calendar.startOfDay(for: date)
-
-        let currentDay = startTime
-        let TaskListResluts: Results<TaskModel>!
-        
+    // 初期スケジュールを登録
+    static func createTaskSchedules(with taskId: String) -> Void {
         let RealmInstance = try! Realm()
-        TaskListResluts = RealmInstance.objects(TaskModel.self) // TODO: 期間中のタスクに絞る
-        if (TaskListResluts.count > 0) {
-            for task in TaskListResluts {
-                let taskScheduleList = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", currentDay as Any).filter("taskId == %@", task.taskId)
-                // 一旦その日のスケジュールがない場合に作成
-                // 終わったページを更新したタイミングで作成しなおす必要がある
-                if (taskScheduleList.count == 0) {
-                    // その日の分のタスクスケジュールを作成する
-                    // TODO: 一旦 page1DayCountから割って算出するけど、実際の前日終了ページ数(endedPageNumber)から計算しなおす必要がある
-                    // 何日間で行うか
-                    let dayInterval = Int((Calendar.current.dateComponents([.day], from: task.scheduleStartAt!, to: currentDay)).day!)
-                    print("dayInterval")
-                    print(dayInterval)
-                    
-                    if (dayInterval < 0) {
-                        continue
-                    }
-                    // 前日までに終わっている予定のページ数
-                    let beforeEndedPageNumber = dayInterval * task.page1DayCount
-                    
-                    print("beforeEndedPageNumber")
-                    print(beforeEndedPageNumber)
-                    // その日にやる予定の開始ページ
-                    let scheduleStartPageNumber = beforeEndedPageNumber + 1
-                    
-                    print("scheduleStartPageNumber")
-                    print(scheduleStartPageNumber)
-                    // その日にやる予定の終了ページ
-                    let scheduleEndPageNumber = beforeEndedPageNumber + task.page1DayCount
-                    
-                    
-                    print("scheduleEndPageNumber")
-                    print(scheduleEndPageNumber)
-                    
-                    if (scheduleStartPageNumber <= 0 || scheduleEndPageNumber > task.pageAllCount) {
-                        continue
-                    }
-                    
-                    let instanceTaskScheduleModel: TaskScheduleModel = TaskScheduleModel()
-                    instanceTaskScheduleModel.taskId = task.taskId
-                    instanceTaskScheduleModel.scheduleStartPageNumber = scheduleStartPageNumber
-                    instanceTaskScheduleModel.scheduleEndPageNumber = scheduleEndPageNumber
-                    instanceTaskScheduleModel.executionDate = currentDay
-                    
-                    try! RealmInstance.write {
-                        task.taskSchedules.append(instanceTaskScheduleModel)
-                            // これだとリレーションが保存されない RealmInstance.add(instanceTaskScheduleModel)
-                    }
-                }
+        let task = TaskModel.getTask(with: taskId)
+        let dayInterval = TaskModel.dayInterval(with: taskId)
+        let page1DayCount = TaskModel.page1DayCount(with: task.taskId)
+        
+        for i in 0 ..< dayInterval! {
+            print(i)
+            let currentDate = Calendar.current.date(byAdding: .day, value: i, to: task.scheduleStartAt)!
+            
+            
+            let currentDay = i // 0スタートで何日目か
+            
+            // 前日までに終わっている予定のページ数
+            let beforeEndedPageNumber = currentDay * page1DayCount!
+
+            // その日にやる予定の開始ページ
+            let scheduleStartPageNumber = beforeEndedPageNumber + 1
+
+            // その日にやる予定の終了ページ
+            let scheduleEndPageNumber =
+                beforeEndedPageNumber + page1DayCount! > task.pageAllCount ?
+                task.pageAllCount :
+                beforeEndedPageNumber + page1DayCount!
+            
+            if (scheduleStartPageNumber <= 0) {
+                continue
             }
+            
+            let model = self.init()
+            model.taskId = task.taskId
+            model.scheduleStartPageNumber = scheduleStartPageNumber
+            model.scheduleEndPageNumber = scheduleEndPageNumber
+            model.executionDate = currentDate
+            
+            try! RealmInstance.write {
+                task.taskSchedules.append(model)
+                    // これだとリレーションが保存されない RealmInstance.add(instanceTaskScheduleModel)
+            }
+            
         }
-        // スケジュールを取得し直す
-        return  RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", currentDay as Any)
+    }
+    
+    // その日のスケジュールを取得
+    static func getTaskSchedule(with date: Date) -> Results<TaskScheduleModel> {
+        let RealmInstance = try! Realm()
+        let result = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", date)
+        return result
     }
 }
