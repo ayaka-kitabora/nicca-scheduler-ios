@@ -4,7 +4,6 @@
 //
 //  Created by 北洞亜也加 on 2021/09/01.
 //
-
 import Foundation
 import RealmSwift
 
@@ -39,14 +38,10 @@ extension TaskScheduleModel {
     }
     
     static func createTaskSchedule(with date: Date) -> Results<TaskScheduleModel>! {
-        let model = self.init()
-        
         let calendar = Calendar.current
         let startTime = calendar.startOfDay(for: date)
 
         let currentDay = startTime
-        let currentTaskScheduleList: Results<TaskScheduleModel>!
-        let selectedDate = DateUtils.stringFromDate(date: currentDay, format: "YYYY-MM-dd")
         let TaskListResluts: Results<TaskModel>!
         
         let RealmInstance = try! Realm()
@@ -105,5 +100,3 @@ extension TaskScheduleModel {
         return  RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", currentDay as Any)
     }
 }
-
-
