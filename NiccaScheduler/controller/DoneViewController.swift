@@ -27,7 +27,7 @@ class DoneViewController: UIViewController, UITableViewDelegate {
         
         let currentDate = Date()
         
-        let doneTaskScheduleList = DoneTaskScheduleModel.getTaskSchedule(with: currentDate)
+        let doneTaskScheduleList = TaskScheduleModel.getDoneTaskSchedule(with: currentDate)
         dataSource.doneTaskScheduleList = doneTaskScheduleList
         doneScheduleTable.reloadData()
     }
