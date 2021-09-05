@@ -13,7 +13,8 @@ class TaskScheduleModel: Object {
     @objc dynamic var taskId: String? = nil // タスクID relationkey
     @objc dynamic var scheduleStartPageNumber: Int = 0 // 今日スタート予定のページ数
     @objc dynamic var scheduleEndPageNumber: Int = 0 // 今日終了予定のページ数
-    @objc dynamic var endedPageNumber: Int = 0 // 今日実際に終了したページ数(やってない場合はstartPage - 1)
+    @objc dynamic var endedPageNumber: Int = 0 // 今日実際に終了したページ数(やってない場合はstartPage - 1) // 一旦使用しない
+    @objc dynamic var endedFlag: Bool = false
     @objc dynamic var createdAt = Date()
     @objc dynamic var updatedAt = Date()
     @objc dynamic var executionDate: Date? = nil // 実行する日時 YYYY-MM-DD

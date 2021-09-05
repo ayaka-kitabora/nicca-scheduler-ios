@@ -13,7 +13,7 @@ class TaskCell: UITableViewCell {
     @IBOutlet weak var checkbox: CheckBox!
     @IBOutlet weak var taskLabel: UILabel!
     var taskScheduleId: String = ""
-    var endedPageNumber: Int = 0
+    var endedFlag: Bool = false
     var scheduleEndPageNumber: Int = 0
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,11 +42,10 @@ class TaskCell: UITableViewCell {
             if (isChecked == true) {
                 // 終了予定のページを実際に終了したページとする
                 // TODO: 実際に終了したページをユーザーが入力できるようにしたい
-                let scheduleEndPageNumber = taskSchedule.scheduleEndPageNumber
-                taskSchedule.endedPageNumber = scheduleEndPageNumber
+                taskSchedule.endedFlag = true
             } else {
                 // チェックが外されたら初期値に戻す
-                taskSchedule.endedPageNumber = 0
+                taskSchedule.endedFlag = false
             }
         }
     }
