@@ -35,7 +35,7 @@ extension TaskScheduleModel {
 
     static func getDoneTaskSchedule(with date: Date) -> Results<TaskScheduleModel>! {
         let RealmInstance = try! Realm()
-        return RealmInstance.objects(TaskScheduleModel.self).filter("endedflag == true")
+        return RealmInstance.objects(TaskScheduleModel.self).filter("endedFlag == true")
     }
     
     // 初期スケジュールを登録
