@@ -37,6 +37,11 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         // TODO: デバックコード あとで消す
         print("Realm file-----")
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
+        // ナビゲーションを透過
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        
         // カレンダー
         self.calendar.dataSource = self
         self.calendar.delegate = self
@@ -57,8 +62,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     }()
   
     @objc private func updateTable(_ notification: Notification) {
-        let currentTaskScheduleList = CurrentTaskScheduleModel.createTaskSchedule(with: currentDate)
-        dataSource.currentTaskScheduleList = currentTaskScheduleList
+        dataSource.currentTaskScheduleList = TaskScheduleModel.getTaskSchedule(with: currentDate)
         taskTableView.reloadData()
     }
     

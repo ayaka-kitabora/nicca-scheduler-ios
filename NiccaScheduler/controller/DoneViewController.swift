@@ -21,14 +21,22 @@ class DoneViewController: UIViewController, UITableViewDelegate {
     
     var doneTaskScheduleList: Results<TaskScheduleModel>!
     private let dataSource = DoneScheduleTableDataSource()
+    let currentDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let currentDate = Date()
-        
-        let doneTaskScheduleList = DoneTaskScheduleModel.getTaskSchedule(with: currentDate)
+        let doneTaskScheduleList = TaskScheduleModel.getDoneTaskSchedule(with: currentDate)
         dataSource.doneTaskScheduleList = doneTaskScheduleList
+        
+        // Notificationの登録
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateTable), name: .doneTask, object: nil)
+        
+        NotificationCenter.default.post(name: .doneTask, object: nil)
+    }
+    
+    @objc private func updateTable(_ notification: Notification) {
+        dataSource.doneTaskScheduleList = TaskScheduleModel.getDoneTaskSchedule(with: currentDate)
         doneScheduleTable.reloadData()
     }
 }

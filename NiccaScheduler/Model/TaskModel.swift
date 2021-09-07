@@ -14,11 +14,11 @@ class TaskModel: Object {
     @objc dynamic var taskName: String? = nil // タスク名
     @objc dynamic var createdAt = Date()
     @objc dynamic var updatedAt = Date()
-    @objc dynamic var scheduleStartAt: Date? = nil // 開始予定日
-    @objc dynamic var scheduleEndAt: Date? = nil // 終了予定日
+    @objc dynamic var scheduleStartAt = Date() // 開始予定日
+    @objc dynamic var scheduleEndAt = Date() // 終了予定日
     @objc dynamic var endedAt: Date? = nil // タスクが終了した日
     @objc dynamic var pageAllCount: Int = 0 // 全体のページ数
-    @objc dynamic var page1DayCount: Int = 0 // 現在の１日に予定されているページ数
+    //@objc dynamic var page1DayCount: Int = 0 // 現在の１日に予定されているページ数
     @objc dynamic var pageEndedCount: Int = 0 // 現時点で終了しているページ数
     
     let taskSchedules = List<TaskScheduleModel>() // 1:多の関係
@@ -26,30 +26,55 @@ class TaskModel: Object {
     override static func primaryKey() -> String? {
         return "taskId"
     }
-}
-// １日に何ページずつ進める予定か1つModelが必要
-// 途中で変更されることがあるので履歴を残しておく
-// まだ使う予定はないけど一応
-class TaskSchedulePageCountModel: Object {
-    @objc dynamic var taskId: String? = nil // タスクID relationkey
-    @objc dynamic var createdAt = Date()
-    @objc dynamic var page1DayCount: Int = 0 // 現在の１日に予定されているページ数
+    
+    override required init() {
+        super.init()
+    }
 }
 
-// タスクごと日毎スケジュール
-class TaskScheduleModel: Object {
-    @objc dynamic var taskScheduleId: String = NSUUID().uuidString // タスクスケジュールID primarykey
-    @objc dynamic var taskId: String? = nil // タスクID relationkey
-    @objc dynamic var scheduleStartPageNumber: Int = 0 // 今日スタート予定のページ数
-    @objc dynamic var scheduleEndPageNumber: Int = 0 // 今日終了予定のページ数
-    @objc dynamic var endedPageNumber: Int = 0 // 今日実際に終了したページ数(やってない場合はstartPage - 1)
-    @objc dynamic var createdAt = Date()
-    @objc dynamic var updatedAt = Date()
-    @objc dynamic var executionDate: Date? = nil // 実行する日時 YYYY-MM-DD
+extension TaskModel {
     
-    let task = LinkingObjects(fromType: TaskModel.self, property: "taskSchedules")
+    static func createTask(with taskName: String, pageAllCount: Int, scheduleEndAt: Date, scheduleStartAt: Date) -> Self {
+        let model = self.init()
+        
+        model.taskName = taskName
+        model.pageAllCount = pageAllCount
+        model.scheduleEndAt = scheduleEndAt
+        model.scheduleStartAt = scheduleStartAt
+        // データベース取得。エラーの場合はクラッシュ
+        let RealmInstance = try! Realm()
+        
+        try! RealmInstance.write {
+            RealmInstance.add(model)
+        }
+        
+        return model
+    }
+
+    static func page1DayCount(with id: String) -> Int! {
+        let RealmInstance = try! Realm()
+        if let model = RealmInstance.object(ofType: TaskModel.self, forPrimaryKey: id) {
+            // タスク予定は何日間か計算
+            let dayInterval = Int((Calendar.current.dateComponents([.day], from: model.scheduleStartAt, to: model.scheduleEndAt)).day!) + 1
+            print("dayInterval", dayInterval)
+            
+            // 1日にやるpage数 割り切れなければ+1ページ
+            let page1DayCount = model.pageAllCount % dayInterval > 0 ? (model.pageAllCount / dayInterval) + 1 : model.pageAllCount / dayInterval
+            return page1DayCount
+        } else {
+            return 0
+        }
+    }
     
-    override static func primaryKey() -> String? {
-        return "taskScheduleId"
+    // 何日間タスクを行うか
+    static func dayInterval(with id: String) -> Int! {
+        let model = self.getTask(with: id)
+        return Int((Calendar.current.dateComponents([.day], from: model.scheduleStartAt, to: model.scheduleEndAt)).day!) + 1
+    }
+    
+    static func getTask(with id: String) -> Self {
+        let RealmInstance = try! Realm()
+        let model = RealmInstance.object(ofType: TaskModel.self, forPrimaryKey: id)
+        return model as! Self
     }
 }

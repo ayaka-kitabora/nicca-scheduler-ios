@@ -36,11 +36,10 @@ extension TaskScheduleTableDataSource: UITableViewDataSource {
             let text = "\(String(describing: task!.taskName!)) \(taskSchedule.scheduleStartPageNumber)〜\( taskSchedule.scheduleEndPageNumber)"
             cell.taskLabel.text = text
             cell.taskScheduleId = taskSchedule.taskScheduleId
-            cell.endedPageNumber = taskSchedule.endedPageNumber
             cell.scheduleEndPageNumber = taskSchedule.scheduleEndPageNumber
             
             var isChecked = false
-            if (taskSchedule.endedPageNumber > 0 && taskSchedule.scheduleEndPageNumber > 0 && taskSchedule.scheduleEndPageNumber <= taskSchedule.endedPageNumber) {
+            if (taskSchedule.endedFlag && taskSchedule.scheduleEndPageNumber > 0) {
                 isChecked = true
             }
             

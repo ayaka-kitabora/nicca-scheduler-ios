@@ -64,29 +64,16 @@ class TaskInputViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func send(_ sender: Any) {
-        let instanceTaskModel: TaskModel = TaskModel()
-        instanceTaskModel.taskName = self.taskNameTextField.text
-        instanceTaskModel.pageAllCount =  Int(self.pageAllCountTextField.text!)!
+        let taskName = self.taskNameTextField.text
+        let pageAllCount =  Int(self.pageAllCountTextField.text!)!
         let scheduleEndAt = DateUtils.dateFromString(string: scheduleEndAtTextField.text!, format: "yyyy-MM-dd")
-        instanceTaskModel.scheduleEndAt = scheduleEndAt
         let scheduleStartAt = DateUtils.dateFromString(string: scheduleStartAtTextField.text!, format: "yyyy-MM-dd")
-        instanceTaskModel.scheduleStartAt = scheduleStartAt
         
-        // タスク予定は何日間か計算
-        let dayInterval = Int((Calendar.current.dateComponents([.day], from: scheduleStartAt, to: scheduleEndAt)).day!) + 1
-        print("dayInterval", dayInterval)
+        // タスクの作成
+        let task = TaskModel.createTask(with: taskName!, pageAllCount: pageAllCount, scheduleEndAt: scheduleEndAt, scheduleStartAt: scheduleStartAt)
         
-        // 1日にやるpage数 割り切れなければ+1ページ
-        instanceTaskModel.page1DayCount = instanceTaskModel.pageAllCount % dayInterval > 0 ? (instanceTaskModel.pageAllCount / dayInterval) + 1 : instanceTaskModel.pageAllCount / dayInterval
-        
-        print("page1DayCount", instanceTaskModel.page1DayCount)
-        
-        // データベース取得。エラーの場合はクラッシュ
-        let RealmInstance = try! Realm()
-        
-        try! RealmInstance.write {
-            RealmInstance.add(instanceTaskModel)
-        }
+        // スケジュールの作成
+        TaskScheduleModel.createTaskSchedules(with: task.taskId)
         
         // Notificationで通知を送る
         NotificationCenter.default.post(name: .submitTodo, object: nil)
