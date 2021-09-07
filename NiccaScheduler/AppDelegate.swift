@@ -12,8 +12,17 @@ import RealmSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
+    var tabBarController: UITabBarController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // タブバー
+        // 背景の透過
+        UITabBar.appearance().backgroundImage = UIImage()
+        // 境界線の透過
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().tintColor = UIColor.white
+        
         var config = Realm.Configuration()
         
         config.schemaVersion = 4

@@ -28,6 +28,7 @@ class DoneViewController: UIViewController, UITableViewDelegate {
         
         let doneTaskScheduleList = TaskScheduleModel.getDoneTaskSchedule(with: currentDate)
         dataSource.doneTaskScheduleList = doneTaskScheduleList
+        
         // Notificationの登録
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateTable), name: .doneTask, object: nil)
         
