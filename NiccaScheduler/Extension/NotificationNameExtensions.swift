@@ -9,4 +9,5 @@ import Foundation
 
 extension Notification.Name {
    static let submitTodo = Notification.Name("submitTodo")
+   static let doneTask = Notification.Name("doneTask")
 }

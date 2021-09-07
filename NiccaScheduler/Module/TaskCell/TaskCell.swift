@@ -48,5 +48,7 @@ class TaskCell: UITableViewCell {
                 taskSchedule.endedFlag = false
             }
         }
+        // Notificationで通知を送る
+        NotificationCenter.default.post(name: .doneTask, object: nil)
     }
 }
