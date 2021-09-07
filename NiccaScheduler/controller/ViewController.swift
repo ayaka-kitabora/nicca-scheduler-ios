@@ -37,6 +37,11 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         // TODO: デバックコード あとで消す
         print("Realm file-----")
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
+        // ナビゲーションを透過
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        
         // カレンダー
         self.calendar.dataSource = self
         self.calendar.delegate = self
