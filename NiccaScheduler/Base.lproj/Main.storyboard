@@ -16,11 +16,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="s58-ra-Rr4" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="269" width="409" height="339"/>
+                                <rect key="frame" x="0.0" y="269" width="375" height="339"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="s58-ra-Rr4" secondAttribute="height" multiplier="375:311" id="r6R-yW-U9q"/>
+                                    <constraint firstAttribute="width" secondItem="s58-ra-Rr4" secondAttribute="height" multiplier="125:113" id="S37-Rw-Iyk"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="headerHeight">
@@ -84,10 +84,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vX4-dY-WMl">
                                 <rect key="frame" x="0.0" y="88" width="375" height="181"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="mA8-kw-PEP"/>
-                                    <constraint firstAttribute="height" constant="181" id="xIp-E1-lZw"/>
-                                </constraints>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -105,9 +101,6 @@
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1b2-Pn-aJD">
                                 <rect key="frame" x="20" y="54" width="335" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="9Xe-K0-oVD"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -116,16 +109,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.60515940189999995" green="0.72554868459999999" blue="0.71764880419999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="s58-ra-Rr4" secondAttribute="bottom" constant="10" id="4TG-8u-1wB"/>
-                            <constraint firstItem="vX4-dY-WMl" firstAttribute="top" secondItem="1b2-Pn-aJD" secondAttribute="bottom" constant="10" id="ALL-B9-a3g"/>
+                            <constraint firstItem="vX4-dY-WMl" firstAttribute="leading" secondItem="s58-ra-Rr4" secondAttribute="leading" id="7Xi-cd-8UO"/>
+                            <constraint firstItem="s58-ra-Rr4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KSk-Y0-dBp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EI7-nC-zB7" secondAttribute="trailing" constant="20" id="QaA-r5-utF"/>
                             <constraint firstItem="1b2-Pn-aJD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Rdr-m8-vXH"/>
                             <constraint firstAttribute="bottom" secondItem="EI7-nC-zB7" secondAttribute="bottom" constant="20" id="Rgh-0w-9qF"/>
-                            <constraint firstItem="vX4-dY-WMl" firstAttribute="leading" secondItem="s58-ra-Rr4" secondAttribute="leading" id="eHz-oi-qeB"/>
-                            <constraint firstItem="s58-ra-Rr4" firstAttribute="top" secondItem="vX4-dY-WMl" secondAttribute="bottom" id="iGB-PM-8KZ"/>
+                            <constraint firstItem="s58-ra-Rr4" firstAttribute="top" secondItem="vX4-dY-WMl" secondAttribute="bottom" id="Saw-zF-87K"/>
+                            <constraint firstItem="vX4-dY-WMl" firstAttribute="top" secondItem="1b2-Pn-aJD" secondAttribute="bottom" constant="10" id="k69-f2-SSA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="s58-ra-Rr4" secondAttribute="bottom" constant="10" id="o9O-J3-iwJ"/>
                             <constraint firstItem="vX4-dY-WMl" firstAttribute="centerX" secondItem="1b2-Pn-aJD" secondAttribute="centerX" id="oAz-nc-Vfd"/>
-                            <constraint firstItem="1b2-Pn-aJD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="qU1-zJ-ktM"/>
+                            <constraint firstItem="1b2-Pn-aJD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="tgt-cX-ijZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1b2-Pn-aJD" secondAttribute="trailing" constant="20" id="y6q-bS-tKp"/>
+                            <constraint firstItem="s58-ra-Rr4" firstAttribute="trailing" secondItem="vX4-dY-WMl" secondAttribute="trailing" id="zSE-tE-67E"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="TASK" selectedImage="calendar" catalog="system" id="GL0-2y-8t5"/>
