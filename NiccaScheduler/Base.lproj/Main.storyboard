@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Ba-xv-Y9L">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,15 +12,15 @@
             <objects>
                 <viewController title="Task" id="BYZ-38-t0r" customClass="ViewController" customModule="NiccaScheduler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="s58-ra-Rr4" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="432" width="414" height="343"/>
+                                <rect key="frame" x="0.0" y="269" width="409" height="339"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="s58-ra-Rr4" secondAttribute="height" multiplier="414:343" id="cco-Ok-mRZ"/>
+                                    <constraint firstAttribute="width" secondItem="s58-ra-Rr4" secondAttribute="height" multiplier="375:311" id="r6R-yW-U9q"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="headerHeight">
@@ -68,7 +68,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EI7-nC-zB7">
-                                <rect key="frame" x="344" y="756" width="50" height="50"/>
+                                <rect key="frame" x="305" y="597" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="eRg-la-wEO"/>
@@ -82,19 +82,20 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vX4-dY-WMl">
-                                <rect key="frame" x="0.0" y="132" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="181"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="vX4-dY-WMl" secondAttribute="height" multiplier="69:50" id="HCo-s8-BWu"/>
+                                    <constraint firstAttribute="width" constant="375" id="mA8-kw-PEP"/>
+                                    <constraint firstAttribute="height" constant="181" id="xIp-E1-lZw"/>
                                 </constraints>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="calendarTableCell" rowHeight="80" id="vtr-6f-Uhl">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="80"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vtr-6f-Uhl" id="whb-zb-3R1">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.57805651430000005" green="0.72951906919999998" blue="0.71764880419999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -103,7 +104,10 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1b2-Pn-aJD">
-                                <rect key="frame" x="20" y="98" width="374" height="24"/>
+                                <rect key="frame" x="20" y="54" width="335" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="9Xe-K0-oVD"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -112,21 +116,19 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.60515940189999995" green="0.72554868459999999" blue="0.71764880419999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="s58-ra-Rr4" secondAttribute="bottom" constant="38" id="4TG-8u-1wB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="s58-ra-Rr4" secondAttribute="bottom" constant="10" id="4TG-8u-1wB"/>
                             <constraint firstItem="vX4-dY-WMl" firstAttribute="top" secondItem="1b2-Pn-aJD" secondAttribute="bottom" constant="10" id="ALL-B9-a3g"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EI7-nC-zB7" secondAttribute="trailing" constant="20" id="QaA-r5-utF"/>
                             <constraint firstItem="1b2-Pn-aJD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Rdr-m8-vXH"/>
-                            <constraint firstAttribute="bottom" secondItem="EI7-nC-zB7" secondAttribute="bottom" constant="90" id="Rgh-0w-9qF"/>
-                            <constraint firstItem="s58-ra-Rr4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VXQ-YD-aU4"/>
-                            <constraint firstItem="s58-ra-Rr4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fI3-Kd-7zD"/>
+                            <constraint firstAttribute="bottom" secondItem="EI7-nC-zB7" secondAttribute="bottom" constant="20" id="Rgh-0w-9qF"/>
+                            <constraint firstItem="vX4-dY-WMl" firstAttribute="leading" secondItem="s58-ra-Rr4" secondAttribute="leading" id="eHz-oi-qeB"/>
                             <constraint firstItem="s58-ra-Rr4" firstAttribute="top" secondItem="vX4-dY-WMl" secondAttribute="bottom" id="iGB-PM-8KZ"/>
-                            <constraint firstItem="vX4-dY-WMl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kwK-su-IuU"/>
-                            <constraint firstItem="vX4-dY-WMl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="not-9U-eQJ"/>
+                            <constraint firstItem="vX4-dY-WMl" firstAttribute="centerX" secondItem="1b2-Pn-aJD" secondAttribute="centerX" id="oAz-nc-Vfd"/>
                             <constraint firstItem="1b2-Pn-aJD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="qU1-zJ-ktM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1b2-Pn-aJD" secondAttribute="trailing" constant="20" id="y6q-bS-tKp"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="TASK" id="GL0-2y-8t5"/>
+                    <tabBarItem key="tabBarItem" title="TASK" selectedImage="calendar" catalog="system" id="GL0-2y-8t5"/>
                     <navigationItem key="navigationItem" id="fRv-Wb-Fcz"/>
                     <connections>
                         <outlet property="addButton" destination="EI7-nC-zB7" id="qO1-Rj-ylb"/>
@@ -137,31 +139,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="350.72463768115944" y="61.607142857142854"/>
+            <point key="canvasLocation" x="349.60000000000002" y="60.719640179910051"/>
         </scene>
         <!--Task Input View Controller-->
         <scene sceneID="EgW-qm-gch">
             <objects>
                 <viewController id="KzF-5M-hxZ" customClass="TaskInputViewController" customModule="NiccaScheduler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ce6-NG-mSe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="7cl-XR-3mN">
-                                <rect key="frame" x="40" y="128" width="334" height="302"/>
+                                <rect key="frame" x="40" y="84" width="295" height="302"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="タスク名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lhX-fV-Vwi">
-                                        <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="合計ページ数・コマ数" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W3m-9e-J6U">
-                                        <rect key="frame" x="0.0" y="67" width="334" height="34"/>
+                                        <rect key="frame" x="0.0" y="67" width="295" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="開始予定日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sqj-7p-N3s">
-                                        <rect key="frame" x="0.0" y="134" width="334" height="34"/>
+                                        <rect key="frame" x="0.0" y="134" width="295" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -169,7 +171,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="終了予定日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y01-X8-32t">
-                                        <rect key="frame" x="0.0" y="201" width="334" height="34"/>
+                                        <rect key="frame" x="0.0" y="201" width="295" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -177,7 +179,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1d-uD-hKN">
-                                        <rect key="frame" x="0.0" y="268" width="334" height="34"/>
+                                        <rect key="frame" x="0.0" y="268" width="295" height="34"/>
                                         <color key="backgroundColor" red="0.85153794289999996" green="0.33878722789999999" blue="0.26662525529999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <state key="normal" title="送信">
@@ -215,21 +217,21 @@
             <objects>
                 <viewController title="Done" id="e6O-RS-h2U" customClass="DoneViewController" customModule="NiccaScheduler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ixf-cg-HRs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-57-ExM">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <color key="backgroundColor" red="0.57418668269999995" green="0.72951757910000004" blue="0.71764892339999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="68" id="BV3-0G-LbL">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="68"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="375" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BV3-0G-LbL" id="WjM-cz-E6K">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.57418668269999995" green="0.72951757910000004" blue="0.71764892339999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -238,7 +240,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DONE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXY-fd-lM4">
-                                <rect key="frame" x="20" y="54" width="374" height="24"/>
+                                <rect key="frame" x="20" y="10" width="335" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -256,7 +258,7 @@
                             <constraint firstItem="Rub-57-ExM" firstAttribute="trailing" secondItem="Hct-jQ-lRM" secondAttribute="trailing" id="tG3-IT-164"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="DONE" id="Vcy-yP-8V0"/>
+                    <tabBarItem key="tabBarItem" title="DONE" selectedImage="checkmark" catalog="system" id="Vcy-yP-8V0"/>
                     <connections>
                         <outlet property="doneScheduleTable" destination="Rub-57-ExM" id="8bn-Fc-PIk"/>
                     </connections>
@@ -269,7 +271,7 @@
         <scene sceneID="Lmr-K8-NZW">
             <objects>
                 <tabBarController id="4Ba-xv-Y9L" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rOl-02-cvD">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="fill" id="rOl-02-cvD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -288,10 +290,10 @@
         <scene sceneID="kOr-Qu-Mnx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rgI-ez-b0p" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="TASK" id="Hn2-ID-iit"/>
+                    <tabBarItem key="tabBarItem" title="TASK" selectedImage="calendar" catalog="system" id="Hn2-ID-iit"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" alpha="0.0" contentMode="scaleToFill" id="SAO-mk-mxI">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -307,6 +309,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="icon_plus" width="100" height="100"/>
     </resources>
 </document>
