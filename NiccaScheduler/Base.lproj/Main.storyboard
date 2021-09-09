@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="s58-ra-Rr4" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="269" width="375" height="339"/>
+                                <rect key="frame" x="0.0" y="219" width="375" height="339"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -67,8 +67,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EI7-nC-zB7">
-                                <rect key="frame" x="305" y="597" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EI7-nC-zB7">
+                                <rect key="frame" x="305" y="568" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="eRg-la-wEO"/>
@@ -82,7 +82,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vX4-dY-WMl">
-                                <rect key="frame" x="0.0" y="88" width="375" height="181"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="131"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -113,17 +113,17 @@
                             <constraint firstItem="s58-ra-Rr4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KSk-Y0-dBp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EI7-nC-zB7" secondAttribute="trailing" constant="20" id="QaA-r5-utF"/>
                             <constraint firstItem="1b2-Pn-aJD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Rdr-m8-vXH"/>
-                            <constraint firstAttribute="bottom" secondItem="EI7-nC-zB7" secondAttribute="bottom" constant="20" id="Rgh-0w-9qF"/>
+                            <constraint firstAttribute="bottom" secondItem="EI7-nC-zB7" secondAttribute="bottom" constant="49" id="Rgh-0w-9qF"/>
                             <constraint firstItem="s58-ra-Rr4" firstAttribute="top" secondItem="vX4-dY-WMl" secondAttribute="bottom" id="Saw-zF-87K"/>
                             <constraint firstItem="vX4-dY-WMl" firstAttribute="top" secondItem="1b2-Pn-aJD" secondAttribute="bottom" constant="10" id="k69-f2-SSA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="s58-ra-Rr4" secondAttribute="bottom" constant="10" id="o9O-J3-iwJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="s58-ra-Rr4" secondAttribute="bottom" constant="60" id="o9O-J3-iwJ"/>
                             <constraint firstItem="vX4-dY-WMl" firstAttribute="centerX" secondItem="1b2-Pn-aJD" secondAttribute="centerX" id="oAz-nc-Vfd"/>
                             <constraint firstItem="1b2-Pn-aJD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="tgt-cX-ijZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1b2-Pn-aJD" secondAttribute="trailing" constant="20" id="y6q-bS-tKp"/>
                             <constraint firstItem="s58-ra-Rr4" firstAttribute="trailing" secondItem="vX4-dY-WMl" secondAttribute="trailing" id="zSE-tE-67E"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="TASK" selectedImage="calendar" catalog="system" id="GL0-2y-8t5"/>
+                    <tabBarItem key="tabBarItem" title="TASK" image="calendar" catalog="system" selectedImage="calendar" id="GL0-2y-8t5"/>
                     <navigationItem key="navigationItem" id="fRv-Wb-Fcz"/>
                     <connections>
                         <outlet property="addButton" destination="EI7-nC-zB7" id="qO1-Rj-ylb"/>
@@ -253,7 +253,7 @@
                             <constraint firstItem="Rub-57-ExM" firstAttribute="trailing" secondItem="Hct-jQ-lRM" secondAttribute="trailing" id="tG3-IT-164"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="DONE" selectedImage="checkmark" catalog="system" id="Vcy-yP-8V0"/>
+                    <tabBarItem key="tabBarItem" title="DONE" image="checkmark" catalog="system" selectedImage="checkmark" id="Vcy-yP-8V0"/>
                     <connections>
                         <outlet property="doneScheduleTable" destination="Rub-57-ExM" id="8bn-Fc-PIk"/>
                     </connections>
@@ -271,6 +271,8 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="rgI-ez-b0p" kind="relationship" relationship="viewControllers" id="ZVf-t9-vzZ"/>

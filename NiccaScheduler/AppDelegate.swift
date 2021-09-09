@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().backgroundImage = UIImage()
         // 境界線の透過
         UITabBar.appearance().shadowImage = UIImage()
-        UITabBar.appearance().tintColor = UIColor.white
         
         var config = Realm.Configuration()
         
