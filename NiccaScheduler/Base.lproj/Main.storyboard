@@ -149,20 +149,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="7cl-XR-3mN">
-                                <rect key="frame" x="40" y="128" width="334" height="302"/>
+                                <rect key="frame" x="40" y="128" width="334" height="465"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="タスク名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lhX-fV-Vwi">
-                                        <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="合計ページ数・コマ数" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W3m-9e-J6U">
-                                        <rect key="frame" x="0.0" y="67" width="334" height="34"/>
+                                        <rect key="frame" x="0.0" y="83" width="334" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="開始予定日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sqj-7p-N3s">
-                                        <rect key="frame" x="0.0" y="134" width="334" height="34"/>
+                                        <rect key="frame" x="0.0" y="166" width="334" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -170,7 +170,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="終了予定日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y01-X8-32t">
-                                        <rect key="frame" x="0.0" y="201" width="334" height="34"/>
+                                        <rect key="frame" x="0.0" y="249" width="334" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -178,7 +178,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1d-uD-hKN">
-                                        <rect key="frame" x="0.0" y="268" width="334" height="34"/>
+                                        <rect key="frame" x="0.0" y="332" width="334" height="50"/>
                                         <color key="backgroundColor" red="0.85153794289999996" green="0.33878722789999999" blue="0.26662525529999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <state key="normal" title="送信">
@@ -188,6 +188,12 @@
                                             <action selector="send:" destination="KzF-5M-hxZ" eventType="touchUpInside" id="0UR-ew-HCh"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pw-PM-xVb">
+                                        <rect key="frame" x="0.0" y="415" width="334" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.85153794289999996" green="0.33878722789999999" blue="0.26662525529999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -201,6 +207,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="MkA-72-xId"/>
                     <connections>
+                        <outlet property="errorLabel" destination="1pw-PM-xVb" id="Y49-r6-ZRw"/>
                         <outlet property="pageAllCountTextField" destination="W3m-9e-J6U" id="idm-jc-Tjf"/>
                         <outlet property="scheduleEndAtTextField" destination="y01-X8-32t" id="vPW-07-Db6"/>
                         <outlet property="scheduleStartAtTextField" destination="Sqj-7p-N3s" id="Fe0-sc-Z1d"/>

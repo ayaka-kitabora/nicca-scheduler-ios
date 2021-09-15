@@ -15,6 +15,7 @@ class TaskInputViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scheduleEndAtTextField: UITextField!
 
     @IBOutlet weak var scheduleStartAtTextField: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
     var datePicker: UIDatePicker = UIDatePicker()
     
     var TaskListResluts: Results<TaskModel>!
@@ -64,11 +65,33 @@ class TaskInputViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func send(_ sender: Any) {
-        let taskName = self.taskNameTextField.text
-        let pageAllCount =  Int(self.pageAllCountTextField.text!)!
-        let scheduleEndAt = DateUtils.dateFromString(string: scheduleEndAtTextField.text!, format: "yyyy-MM-dd")
-        let scheduleStartAt = DateUtils.dateFromString(string: scheduleStartAtTextField.text!, format: "yyyy-MM-dd")
+        errorLabel.text = ""
         
+        if (taskNameTextField.text == "" || pageAllCountTextField.text == "" || scheduleEndAtTextField.text == "" || scheduleStartAtTextField.text == "") {
+            errorLabel.text = "全ての項目を入力してください"
+            return
+        }
+        
+        guard let pageAllCount: Int = Int(pageAllCountTextField.text!) else {
+            errorLabel.text = "ページを正しく入力してください"
+            return
+        }
+        
+        let formatter: DateFormatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        guard let scheduleStartAt: Date = formatter.date(from: scheduleStartAtTextField.text!) as Date? else {
+            errorLabel.text = "開始日を正しく入力してください"
+            return
+        }
+        
+        guard let scheduleEndAt: Date = formatter.date(from: scheduleEndAtTextField.text!) as Date? else {
+            errorLabel.text = "終了日を正しく入力してください"
+            return
+        }
+
+        let taskName = taskNameTextField.text
         // タスクの作成
         let task = TaskModel.createTask(with: taskName!, pageAllCount: pageAllCount, scheduleEndAt: scheduleEndAt, scheduleStartAt: scheduleStartAt)
         
