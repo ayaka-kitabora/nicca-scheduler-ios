@@ -45,6 +45,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         // カレンダー
         self.calendar.dataSource = self
         self.calendar.delegate = self
+        self.calendar.select(currentDate)
         // Notificationの登録
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateTable), name: .submitTodo, object: nil)
         
