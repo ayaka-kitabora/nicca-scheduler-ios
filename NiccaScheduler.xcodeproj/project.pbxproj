@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A71AD58D26F62E5000355597 /* IDETemplateMacros.plist in Resources */ = {isa = PBXBuildFile; fileRef = A71AD58C26F62E5000355597 /* IDETemplateMacros.plist */; };
 		A750660C264296F70010A366 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A750660B264296F70010A366 /* AppDelegate.swift */; };
 		A750660E264296F70010A366 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A750660D264296F70010A366 /* SceneDelegate.swift */; };
 		A7506610264296F70010A366 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A750660F264296F70010A366 /* ViewController.swift */; };
@@ -32,7 +31,6 @@
 /* Begin PBXFileReference section */
 		0B045689A64864D378AED5C8 /* Pods-NiccaScheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiccaScheduler.debug.xcconfig"; path = "Target Support Files/Pods-NiccaScheduler/Pods-NiccaScheduler.debug.xcconfig"; sourceTree = "<group>"; };
 		16CBD59BA2976DFB42A30887 /* Pods-NiccaScheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiccaScheduler.release.xcconfig"; path = "Target Support Files/Pods-NiccaScheduler/Pods-NiccaScheduler.release.xcconfig"; sourceTree = "<group>"; };
-		A71AD58C26F62E5000355597 /* IDETemplateMacros.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = IDETemplateMacros.plist; sourceTree = "<group>"; };
 		A7506608264296F70010A366 /* NiccaScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiccaScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A750660B264296F70010A366 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A750660D264296F70010A366 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 				A7506611264296F70010A366 /* Main.storyboard */,
 				A7506614264297010010A366 /* Assets.xcassets */,
 				A7506616264297010010A366 /* LaunchScreen.storyboard */,
-				A71AD58C26F62E5000355597 /* IDETemplateMacros.plist */,
 				A7506619264297010010A366 /* Info.plist */,
 			);
 			path = NiccaScheduler;
@@ -263,7 +260,6 @@
 			files = (
 				A7539008265A480600951E6F /* TaskCell.xib in Resources */,
 				A7506618264297010010A366 /* LaunchScreen.storyboard in Resources */,
-				A71AD58D26F62E5000355597 /* IDETemplateMacros.plist in Resources */,
 				A7506615264297010010A366 /* Assets.xcassets in Resources */,
 				A7506613264296F70010A366 /* Main.storyboard in Resources */,
 			);

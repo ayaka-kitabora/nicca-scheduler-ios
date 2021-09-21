@@ -90,6 +90,15 @@ class TaskInputViewController: UIViewController, UITextFieldDelegate {
             errorLabel.text = "終了日を正しく入力してください"
             return
         }
+        
+        let calendar = Calendar(identifier: .gregorian)
+        let diff = calendar.dateComponents([.day], from: scheduleStartAt, to: scheduleEndAt)
+        let numberOfDays = diff.day!
+
+        guard numberOfDays >= 0 else {
+            errorLabel.text = "開始日と終了日を正しく入力してください"
+            return
+        }
 
         let taskName = taskNameTextField.text
         // タスクの作成
