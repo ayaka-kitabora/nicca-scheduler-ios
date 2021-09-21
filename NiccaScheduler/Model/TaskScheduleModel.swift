@@ -68,6 +68,10 @@ extension TaskScheduleModel {
                 continue
             }
             
+            if (scheduleEndPageNumber - scheduleStartPageNumber < 0) {
+                continue
+            }
+            
             let model = self.init()
             model.taskId = task.taskId
             model.scheduleStartPageNumber = scheduleStartPageNumber
@@ -85,7 +89,9 @@ extension TaskScheduleModel {
     // その日のスケジュールを取得
     static func getTaskSchedule(with date: Date) -> Results<TaskScheduleModel> {
         let RealmInstance = try! Realm()
-        let result = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", date)
+        let calendar = Calendar(identifier: .gregorian)
+        let startOfDay = calendar.startOfDay(for: date)
+        let result = RealmInstance.objects(TaskScheduleModel.self).filter("executionDate == %@", startOfDay)
         return result
     }
 }
