@@ -12,7 +12,7 @@ class DateUtils {
         let formatter: DateFormatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .gregorian)
         formatter.dateFormat = format
-        print(string)
+
         return formatter.date(from: string)!
     }
 

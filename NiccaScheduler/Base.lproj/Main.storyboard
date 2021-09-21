@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,12 +17,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="s58-ra-Rr4" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="432" width="414" height="343"/>
+                                <rect key="frame" x="0.0" y="332" width="414" height="481"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="s58-ra-Rr4" secondAttribute="height" multiplier="414:343" id="cco-Ok-mRZ"/>
-                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="headerHeight">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,25 +65,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EI7-nC-zB7">
-                                <rect key="frame" x="344" y="756" width="50" height="50"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="eRg-la-wEO"/>
-                                    <constraint firstAttribute="width" constant="50" id="uTI-dq-kpk"/>
-                                </constraints>
-                                <state key="normal" image="icon_plus">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="KzF-5M-hxZ" kind="show" identifier="TaskInputVC" id="PCX-QZ-xVW"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vX4-dY-WMl">
-                                <rect key="frame" x="0.0" y="132" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="132" width="414" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="vX4-dY-WMl" secondAttribute="height" multiplier="69:50" id="HCo-s8-BWu"/>
+                                    <constraint firstAttribute="height" constant="200" id="2ok-lR-z7F"/>
                                 </constraints>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -112,22 +96,39 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.60515940189999995" green="0.72554868459999999" blue="0.71764880419999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="s58-ra-Rr4" secondAttribute="bottom" constant="38" id="4TG-8u-1wB"/>
-                            <constraint firstItem="vX4-dY-WMl" firstAttribute="top" secondItem="1b2-Pn-aJD" secondAttribute="bottom" constant="10" id="ALL-B9-a3g"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EI7-nC-zB7" secondAttribute="trailing" constant="20" id="QaA-r5-utF"/>
-                            <constraint firstItem="1b2-Pn-aJD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Rdr-m8-vXH"/>
-                            <constraint firstAttribute="bottom" secondItem="EI7-nC-zB7" secondAttribute="bottom" constant="90" id="Rgh-0w-9qF"/>
-                            <constraint firstItem="s58-ra-Rr4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VXQ-YD-aU4"/>
-                            <constraint firstItem="s58-ra-Rr4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fI3-Kd-7zD"/>
-                            <constraint firstItem="s58-ra-Rr4" firstAttribute="top" secondItem="vX4-dY-WMl" secondAttribute="bottom" id="iGB-PM-8KZ"/>
-                            <constraint firstItem="vX4-dY-WMl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kwK-su-IuU"/>
-                            <constraint firstItem="vX4-dY-WMl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="not-9U-eQJ"/>
-                            <constraint firstItem="1b2-Pn-aJD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="qU1-zJ-ktM"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1b2-Pn-aJD" secondAttribute="trailing" constant="20" id="y6q-bS-tKp"/>
+                            <constraint firstItem="vX4-dY-WMl" firstAttribute="leading" secondItem="s58-ra-Rr4" secondAttribute="leading" id="7Xi-cd-8UO"/>
+                            <constraint firstItem="s58-ra-Rr4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KSk-Y0-dBp"/>
+                            <constraint firstItem="s58-ra-Rr4" firstAttribute="top" secondItem="vX4-dY-WMl" secondAttribute="bottom" id="Saw-zF-87K"/>
+                            <constraint firstItem="1b2-Pn-aJD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="k5J-7l-XbG"/>
+                            <constraint firstItem="vX4-dY-WMl" firstAttribute="top" secondItem="1b2-Pn-aJD" secondAttribute="bottom" constant="10" id="k69-f2-SSA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="s58-ra-Rr4" secondAttribute="bottom" id="o9O-J3-iwJ"/>
+                            <constraint firstItem="vX4-dY-WMl" firstAttribute="centerX" secondItem="1b2-Pn-aJD" secondAttribute="centerX" id="oAz-nc-Vfd"/>
+                            <constraint firstItem="1b2-Pn-aJD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="tgt-cX-ijZ"/>
+                            <constraint firstItem="1b2-Pn-aJD" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="uKn-6s-1Ds"/>
+                            <constraint firstItem="s58-ra-Rr4" firstAttribute="trailing" secondItem="vX4-dY-WMl" secondAttribute="trailing" id="zSE-tE-67E"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="TASK" id="GL0-2y-8t5"/>
-                    <navigationItem key="navigationItem" id="fRv-Wb-Fcz"/>
+                    <tabBarItem key="tabBarItem" title="TASK" image="calendar" catalog="system" selectedImage="calendar" id="GL0-2y-8t5"/>
+                    <navigationItem key="navigationItem" id="fRv-Wb-Fcz">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="ex9-Y0-AY0">
+                            <button key="customView" opaque="NO" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="EI7-nC-zB7">
+                                <rect key="frame" x="305.5" y="10" width="88.5" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="タスク追加">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="default" renderingMode="template"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="14" scale="default" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <segue destination="KzF-5M-hxZ" kind="show" identifier="TaskInputVC" id="PCX-QZ-xVW"/>
+                                </connections>
+                            </button>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="EI7-nC-zB7" id="qO1-Rj-ylb"/>
                         <outlet property="calendar" destination="s58-ra-Rr4" id="XWi-vk-c1r"/>
@@ -137,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="350.72463768115944" y="61.607142857142854"/>
+            <point key="canvasLocation" x="349.27536231884062" y="60.267857142857139"/>
         </scene>
         <!--Task Input View Controller-->
         <scene sceneID="EgW-qm-gch">
@@ -148,20 +149,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="7cl-XR-3mN">
-                                <rect key="frame" x="40" y="128" width="334" height="302"/>
+                                <rect key="frame" x="40" y="128" width="334" height="465"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="タスク名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lhX-fV-Vwi">
-                                        <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="合計ページ数・コマ数" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W3m-9e-J6U">
-                                        <rect key="frame" x="0.0" y="67" width="334" height="34"/>
+                                        <rect key="frame" x="0.0" y="83" width="334" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="開始予定日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sqj-7p-N3s">
-                                        <rect key="frame" x="0.0" y="134" width="334" height="34"/>
+                                        <rect key="frame" x="0.0" y="166" width="334" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -169,7 +170,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="終了予定日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y01-X8-32t">
-                                        <rect key="frame" x="0.0" y="201" width="334" height="34"/>
+                                        <rect key="frame" x="0.0" y="249" width="334" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -177,7 +178,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1d-uD-hKN">
-                                        <rect key="frame" x="0.0" y="268" width="334" height="34"/>
+                                        <rect key="frame" x="0.0" y="332" width="334" height="50"/>
                                         <color key="backgroundColor" red="0.85153794289999996" green="0.33878722789999999" blue="0.26662525529999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <state key="normal" title="送信">
@@ -187,6 +188,12 @@
                                             <action selector="send:" destination="KzF-5M-hxZ" eventType="touchUpInside" id="0UR-ew-HCh"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pw-PM-xVb">
+                                        <rect key="frame" x="0.0" y="415" width="334" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.85153794289999996" green="0.33878722789999999" blue="0.26662525529999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -200,6 +207,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="MkA-72-xId"/>
                     <connections>
+                        <outlet property="errorLabel" destination="1pw-PM-xVb" id="Y49-r6-ZRw"/>
                         <outlet property="pageAllCountTextField" destination="W3m-9e-J6U" id="idm-jc-Tjf"/>
                         <outlet property="scheduleEndAtTextField" destination="y01-X8-32t" id="vPW-07-Db6"/>
                         <outlet property="scheduleStartAtTextField" destination="Sqj-7p-N3s" id="Fe0-sc-Z1d"/>
@@ -256,7 +264,7 @@
                             <constraint firstItem="Rub-57-ExM" firstAttribute="trailing" secondItem="Hct-jQ-lRM" secondAttribute="trailing" id="tG3-IT-164"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="DONE" id="Vcy-yP-8V0"/>
+                    <tabBarItem key="tabBarItem" title="DONE" image="checkmark" catalog="system" selectedImage="checkmark" id="Vcy-yP-8V0"/>
                     <connections>
                         <outlet property="doneScheduleTable" destination="Rub-57-ExM" id="8bn-Fc-PIk"/>
                     </connections>
@@ -269,11 +277,13 @@
         <scene sceneID="Lmr-K8-NZW">
             <objects>
                 <tabBarController id="4Ba-xv-Y9L" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rOl-02-cvD">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="fill" id="rOl-02-cvD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="rgI-ez-b0p" kind="relationship" relationship="viewControllers" id="ZVf-t9-vzZ"/>
@@ -288,7 +298,7 @@
         <scene sceneID="kOr-Qu-Mnx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rgI-ez-b0p" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="TASK" id="Hn2-ID-iit"/>
+                    <tabBarItem key="tabBarItem" title="TASK" selectedImage="calendar" catalog="system" id="Hn2-ID-iit"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" alpha="0.0" contentMode="scaleToFill" id="SAO-mk-mxI">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -307,6 +317,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_plus" width="100" height="100"/>
+        <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>
