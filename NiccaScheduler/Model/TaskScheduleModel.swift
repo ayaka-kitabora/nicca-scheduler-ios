@@ -68,6 +68,10 @@ extension TaskScheduleModel {
                 continue
             }
             
+            if (scheduleEndPageNumber - scheduleStartPageNumber < 0) {
+                continue
+            }
+            
             let model = self.init()
             model.taskId = task.taskId
             model.scheduleStartPageNumber = scheduleStartPageNumber
