@@ -99,7 +99,7 @@ class TaskInputViewController: UIViewController, UITextFieldDelegate {
         TaskScheduleModel.createTaskSchedules(with: task.taskId)
         
         // Notificationで通知を送る
-        NotificationCenter.default.post(name: .submitTodo, object: nil)
+        NotificationCenter.default.post(name: Notification.Name.submitTodo, object: nil)
         
         // 前のページに戻る
         self.navigationController?.popViewController(animated: true)

@@ -50,9 +50,13 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateTable), name: .submitTodo, object: nil)
         
         selectedDate.text = DateUtils.stringFromDate(date: currentDate, format: "YYYY-MM-dd")
-        // Notificationで通知を送る
-        NotificationCenter.default.post(name: .submitTodo, object: nil)
         
+    }
+    private var firstAppear: Bool = false
+    override func viewDidAppear(_ animated: Bool) {
+            super.viewDidAppear(animated)
+            // Notificationで通知を送る
+            NotificationCenter.default.post(name: Notification.Name.submitTodo, object: nil)
     }
     
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
@@ -73,7 +77,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         currentDate = date
         selectedDate.text = DateUtils.stringFromDate(date: currentDate, format: "YYYY-MM-dd")
         // Notificationで通知を送る
-        NotificationCenter.default.post(name: .submitTodo, object: nil)
+        NotificationCenter.default.post(name: Notification.Name.submitTodo, object: nil)
     }
     
 }
