@@ -16,8 +16,9 @@ class TaskInputViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var scheduleStartAtTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
-    var datePicker: UIDatePicker = UIDatePicker()
+    @IBOutlet weak var submitButton: UIButton!
     
+    var datePicker: UIDatePicker = UIDatePicker()
     var TaskListResluts: Results<TaskModel>!
     
     var editingDatePickerType: String! // start or end
@@ -29,6 +30,8 @@ class TaskInputViewController: UIViewController, UITextFieldDelegate {
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.timeZone = NSTimeZone.local
         datePicker.locale = Locale.current
+        
+        submitButton.layer.cornerRadius = 6.0
         
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
         let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
