@@ -49,7 +49,7 @@ extension TaskScheduleModel {
             print(i)
             let currentDate = Calendar.current.date(byAdding: .day, value: i, to: task.scheduleStartAt)!
             
-            
+
             let currentDay = i // 0スタートで何日目か
             
             // 前日までに終わっている予定のページ数
